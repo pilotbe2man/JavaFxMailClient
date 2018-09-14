@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -14,21 +15,26 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="694.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="downloadAttachBtn" layoutX="233.0" layoutY="21.0" mnemonicParsing="false" onAction="#downloadAttachBtnAction" text="Download attachments" />
-      <TreeView fx:id="emailFoldersTreeView" layoutX="14.0" layoutY="60.0" prefHeight="630.0" prefWidth="218.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="60.0" />
-      <TableView fx:id="emailTableView" layoutX="233.0" layoutY="60.0" prefHeight="215.0" prefWidth="902.0" AnchorPane.leftAnchor="233.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
+      <TreeView fx:id="emailFoldersTreeView" layoutX="175.0" layoutY="60.0" prefHeight="622.0" prefWidth="218.0" />
+      <ListView fx:id="addressbookListView" layoutX="175.0" layoutY="60.0" onMouseClicked="#handleMouseClick" prefHeight="622.0" prefWidth="218.0" />
+      <TableView fx:id="emailTableView" layoutX="393.0" layoutY="60.0" prefHeight="215.0" prefWidth="823.0" AnchorPane.leftAnchor="393.0" AnchorPane.rightAnchor="7.0">
          <columns>
-            <TableColumn fx:id="subjectCol" prefWidth="234.0" text="Subject" />
-            <TableColumn fx:id="senderCol" prefWidth="250.0" text="Sender" />
-            <TableColumn fx:id="recipientCol" prefWidth="239.0" text="Recipient" />
-            <TableColumn fx:id="dateCol" prefWidth="167.0" text="Date" />
-            <TableColumn fx:id="sizeCol" prefWidth="67.0" text="Size" />
+            <TableColumn fx:id="subjectCol" prefWidth="212.0" text="Subject" />
+            <TableColumn fx:id="senderCol" prefWidth="209.0" text="Sender" />
+            <TableColumn fx:id="recipientCol" prefWidth="106.0" text="Recipient" />
+            <TableColumn fx:id="dateCol" prefWidth="111.0" text="Date" />
+            <TableColumn fx:id="sizeCol" prefWidth="123.0" text="Size" />
          </columns></TableView>
-      <WebView fx:id="messageRenderer" layoutX="232.0" layoutY="275.0" prefHeight="416.0" prefWidth="902.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="275.0" />
-      <Label fx:id="attachementsLabel" layoutX="387.0" layoutY="25.0" prefHeight="17.0" prefWidth="575.0" text="Label" />
-      <ProgressIndicator fx:id="attachProgress" layoutX="954.0" layoutY="14.0" progress="0.0" />
-      <Label fx:id="downAttachLabel" layoutX="1025.0" layoutY="17.0" text="Downloading attachments..." />
+      <WebView fx:id="messageRenderer" layoutX="393.0" layoutY="278.0" prefHeight="404.0" prefWidth="823.0" AnchorPane.leftAnchor="393.0" AnchorPane.rightAnchor="7.0" />
+      <Label fx:id="attachementsLabel" layoutX="402.0" layoutY="25.0" prefHeight="17.0" prefWidth="552.0" text="Label" AnchorPane.leftAnchor="402.0" AnchorPane.rightAnchor="269.0" />
+      <ProgressIndicator fx:id="attachProgress" layoutX="954.0" layoutY="14.0" progress="0.0" AnchorPane.rightAnchor="236.0" />
+      <Label fx:id="downAttachLabel" layoutX="994.0" layoutY="18.0" prefHeight="15.0" prefWidth="152.0" text="Downloading attachments..." AnchorPane.rightAnchor="77.0">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
       <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#composeBtnAction" text="Compose" />
-      <!--<Button layoutX="85.0" layoutY="21.0" mnemonicParsing="false" onAction="#addAccountBtnAction" text="Add Account" />-->
-      <Button layoutX="1150.0" layoutY="21.0" mnemonicParsing="false" onAction="#logutBtnAction" text="Logout" />
+      <Button fx:id="addAccountBtn" layoutX="95.0" layoutY="21.0" mnemonicParsing="false" onAction="#addAccountBtnAction" text="Add Account" />
+      <Button layoutX="1156.0" layoutY="21.0" mnemonicParsing="false" onAction="#logutBtnAction" text="Logout" AnchorPane.rightAnchor="7.0" />
+      <ListView fx:id="categoryListView" layoutX="15.0" layoutY="60.0" onMouseClicked="#handleMouseClick" prefHeight="622.0" prefWidth="160.0" />
    </children>
 </AnchorPane>

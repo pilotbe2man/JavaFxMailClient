@@ -38,16 +38,103 @@ public class EmailAccountBean {
 		return loginState;
 	}
 
-	public EmailAccountBean(String emailAdress, String password) {
+	public EmailAccountBean(String emailAdress, String password, String type) {
 		this.emailAdress = emailAdress;
 		this.password = password;
 		properties = new Properties();
 		properties.put("mail.store.protocol", "imaps");
 		properties.put("mail.transport.protocol", "smtps");
-		properties.put("mail.smtps.host", "smtp-mail.outlook.com");
+		
+		String smtpsHost;
+		String inComingHost;
+		String outGoingHost;
+		switch (type) {
+		
+		case "qq":
+			properties.put("mail.smtp.port", "465");
+			smtpsHost = "smtp.qq.com";
+			inComingHost = "imap.qq.com";
+			outGoingHost = "smtp.qq.com";
+			break;
+			
+		case "163":
+			properties.put("mail.smtp.port", "465");
+			smtpsHost = "smtp.163.com";
+			inComingHost = "imap.163.com";
+			outGoingHost = "smtp.163.com";
+			break;
+			
+		case "126":
+			properties.put("mail.smtp.port", "465");
+			smtpsHost = "smtp.126.com";
+			inComingHost = "imap.126.com";
+			outGoingHost = "smtp.126.com";
+			break;
+			
+		case "sina":
+			properties.put("mail.pop3.port", "995");
+			properties.put("mail.smtp.port", "465");
+			properties.put("mail.store.protocol", "pop3");
+			smtpsHost = "smtp.sina.com";
+			inComingHost = "pop.sina.com";
+			outGoingHost = "smtp.sina.com";
+			break;
+			
+		case "hotmail":
+			
+			smtpsHost = "smtp-mail.outlook.com";
+			inComingHost = "imap-mail.outlook.com";
+			outGoingHost = "smtp-mail.outlook.com";
+			
+			break;
+			
+		case "gmail":
+			properties.put("mail.smtp.port", "587");
+			smtpsHost = "smtp.gmail.com";
+			inComingHost = "imap.gmail.com";
+			outGoingHost = "smtp.gmail.com";
+			break;
+			
+		case "fox":
+			smtpsHost = "smtp.qq.com";
+			inComingHost = "imap.qq.com";
+			outGoingHost = "smtp.qq.com";
+			break;
+			
+		case "139":
+			properties.put("mail.smtp.port", "465");
+			smtpsHost = "smtp.139.com";
+			inComingHost = "imap.139.com";
+			outGoingHost = "smtp.139.com";
+			break;
+			
+		case "sohu":
+			properties.put("mail.pop3.port", "110");
+			properties.put("mail.smtp.port", "25");
+			properties.put("mail.store.protocol", "pop3");
+			smtpsHost = "smtp.sohu.com";
+			inComingHost = "pop3.sohu.com";
+			outGoingHost = "smtp.sohu.com";
+			break;
+			
+		case "outlook":
+			smtpsHost = "smtp-mail-outlook.com";
+			inComingHost = "imap-mail.outlook.com";
+			outGoingHost = "smtp-mail-outlook.com";
+			break;
+			
+		default:
+			smtpsHost = "";
+			inComingHost = "";
+			outGoingHost = "";
+			break;
+			
+		}
+		
+		properties.put("mail.smtps.host", smtpsHost);
 		properties.put("mail.smtps.auth", "true");
-		properties.put("incomingHost", "imap-mail.outlook.com");
-		properties.put("outgoingHost", "smtp-mail.outlook.com");
+		properties.put("incomingHost", inComingHost);
+		properties.put("outgoingHost", outGoingHost);
 
 		Authenticator auth = new Authenticator() {
 			@Override

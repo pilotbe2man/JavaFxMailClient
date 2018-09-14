@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.mail.Folder;
 
 import com.jinyuan.controller.persistence.ValidAccount;
+import com.jinyuan.controller.persistence.ValidAddressBook;
 import com.jinyuan.model.EmailAccountBean;
 import com.jinyuan.model.EmailMessageBean;
 import com.jinyuan.model.folder.EmailFolderBean;
@@ -21,7 +22,11 @@ public class ModelAccess {
 	private Map<String, EmailAccountBean> emailAccounts = new HashMap<String, EmailAccountBean>();
 	private ObservableList<String> emailAccountsNames = FXCollections.observableArrayList();
 	private List<ValidAccount> validAccountList = new ArrayList<ValidAccount>();
+	private ObservableList<ValidAddressBook> validAddressBookList = FXCollections.observableArrayList();
 	private EmailFolderBean<String> root = new EmailFolderBean<String>("", new ImageView());
+	
+	//mail type
+	private String mailType;
 
 	public ObservableList<String> getEmailAccountNames() {
 		return emailAccountsNames;
@@ -34,7 +39,11 @@ public class ModelAccess {
 	public void addAccount(EmailAccountBean account) {
 		emailAccounts.put(account.getEmailAdress(), account);
 		emailAccountsNames.add(account.getEmailAdress());
-		validAccountList.add(new ValidAccount(account.getEmailAdress(), account.getPassword()));
+		validAccountList.add(new ValidAccount(account.getEmailAdress(), account.getPassword(), mailType));
+	}
+	
+	public void addUser(ValidAddressBook user) {
+		validAddressBookList.add(user);
 	}
 
 	private EmailMessageBean selectedMessage;
@@ -74,6 +83,16 @@ public class ModelAccess {
 	public List<ValidAccount> getValidAccountList(){
 		return validAccountList;
 	}
+	
+	public ObservableList<ValidAddressBook> getValidAddressBookList(){
+		return validAddressBookList;
+	}
 
-
+	public String getMailType() {
+		return mailType;
+	}
+	
+	public void setMailType(String aType) {
+		mailType = aType;
+	}
 }

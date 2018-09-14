@@ -26,7 +26,7 @@ public class CreateAndRegisterEmailAccountService extends Service<Integer>{
 		return new Task<Integer>(){
 			@Override
 			protected Integer call() throws Exception {
-					EmailAccountBean emailAccount = new EmailAccountBean(emailAddress, password );
+					EmailAccountBean emailAccount = new EmailAccountBean(emailAddress, password, modelAccess.getMailType());
 					if (emailAccount.getLoginState() == EmailConstants.LOGIN_STATE_SUCCEDED) {
 						modelAccess.addAccount(emailAccount);
 						EmailFolderBean<String> emailFolderBean = new EmailFolderBean<String>(

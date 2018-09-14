@@ -9,7 +9,7 @@ import com.jinyuan.controller.services.CreateAndRegisterEmailAccountService;
 import com.jinyuan.model.EmailConstants;
 import com.jinyuan.view.ViewFactory;
 
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -29,10 +29,56 @@ public class AddAccountController extends AbstractController implements Initiali
     @FXML
     private Label statusLabel;
     
+    void clearStatusLabel() {
+    	new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					Thread.sleep(2000);
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							statusLabel.setText("");
+						}
+					});
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
+    }
+    
+    @FXML
+    void cancelBtnAction() {
+    	Stage stage = (Stage)addressField.getScene().getWindow();
+    	stage.setScene(ViewFactory.defaultFactory.getMailTypeSelectionScene());
+    }
+    
     @FXML
     void loginBtnAction() {
 
     	//TODO add validation
+    	if (addressField.getText().isEmpty()) {
+    		statusLabel.setText("Please input the email address...");
+    		clearStatusLabel();
+    		return;
+    	}
+    	
+    	if (!isValidateEmail(addressField.getText())) {
+    		statusLabel.setText("Invalidate email addres...");
+    		clearStatusLabel();
+    		return;
+    	}
+    	
+    	if (passwordField.getText().isEmpty()) {
+    		statusLabel.setText("Please input the password...");
+    		clearStatusLabel();
+    		return;
+    	}
+    	
     	//TODO add props handling
     	statusLabel.setText("");
     	CreateAndRegisterEmailAccountService createAndRegisterEmailAccountService = 

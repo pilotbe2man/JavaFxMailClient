@@ -2,10 +2,12 @@ package com.jinyuan.controller;
 
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.mail.Flags;
 
+import com.jinyuan.controller.persistence.ValidAddressBook;
 import com.jinyuan.controller.services.FolderUpdaterService;
 import com.jinyuan.controller.services.MessageRendererService;
 import com.jinyuan.controller.services.SaveAttachmentsService;
@@ -23,14 +25,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class MainController extends AbstractController implements Initializable{
 	
@@ -41,7 +47,9 @@ public class MainController extends AbstractController implements Initializable{
 	@FXML
     private TreeView<String> emailFoldersTreeView;
 	@FXML
-    private TreeView<String> addressbookTreeView;
+    private ListView<String> categoryListView;
+	@FXML
+	private ListView<ValidAddressBook> addressbookListView;
 	
     private MenuItem showDetails = new MenuItem("show details");
     private MenuItem markUnread = new MenuItem("mark as unread");
@@ -69,7 +77,9 @@ public class MainController extends AbstractController implements Initializable{
     @FXML
     private TableColumn<EmailMessageBean, Date> dateCol;	
     @FXML
-    private WebView messageRenderer;	
+    private WebView messageRenderer;
+    @FXML
+    private Button addAccountBtn;
     @FXML
     private Button downloadAttachBtn;
     @FXML
@@ -89,22 +99,128 @@ public class MainController extends AbstractController implements Initializable{
     }
     
     @FXML
-    void addAccountBtnAction(){
-    	Scene scene = ViewFactory.defaultFactory.getAddAccountScene();
+    void addAccountBtnAction() {
+    	
+    	String selectedItem = categoryListView.getSelectionModel().getSelectedItem();
+    	System.out.println("clicked on " + selectedItem);
+    	
+    	Scene scene = null;
+    	switch (selectedItem) {
+    	
+		case "Mail":
+			
+			scene = ViewFactory.defaultFactory.getMailTypeSelectionScene();
+			
+			break;
+			
+		case "AddressBook":
+			
+			scene = ViewFactory.defaultFactory.getAddUserScene();
+			
+			break;
+
+		default:
+			break;
+		}
+    	
+    	
     	Stage stage = new Stage();
     	stage.setScene(scene);
     	stage.show();
     }
     
     @FXML
-    void logutBtnAction(){
+    void handleMouseClick(MouseEvent arg0) {
+    	
+    	String selectedItem = categoryListView.getSelectionModel().getSelectedItem();
+    	System.out.println("clicked on " + selectedItem);
+    	
+    	switch (selectedItem) {
+    	
+		case "Mail":
+			addAccountBtn.setText("Add Account");
+			addressbookListView.setVisible(false);
+			emailFoldersTreeView.setVisible(true);
+			break;
+			
+		case "AddressBook":
+			addAccountBtn.setText("Add User");
+			addressbookListView.setVisible(true);
+			emailFoldersTreeView.setVisible(false);
+			break;
+
+		default:
+			break;
+		}
+    	
     }
+    
+    @FXML
+    void logutBtnAction(){
+    	System.out.println("clicked on logout");
+    	Stage stage = (Stage)categoryListView.getScene().getWindow();
+    	stage.close();
+    	
+    	ViewFactory.defaultFactory.getPersistenceAcess().clear();
+    	stage = new Stage();
+    	stage.setScene(ViewFactory.defaultFactory.getMailTypeSelectionScene());
+    	stage.show();
+    }
+    
     
     private MessageRendererService messageRendererService;
     private FolderUpdaterService folderUpdaterService;
     
+    void loadAddressBook() {
+
+		addressbookListView.setItems(getModelAccess().getValidAddressBookList());
+
+		addressbookListView.setCellFactory(new Callback<ListView<ValidAddressBook>, ListCell<ValidAddressBook>>() {
+			
+			@Override
+			public ListCell<ValidAddressBook> call(ListView<ValidAddressBook> param) {
+				// TODO Auto-generated method stub
+				return new AddressBookListCell();
+			}
+		});
+		
+    	if (ViewFactory.defaultFactory.getPersistenceAcess().validAddressBookfound()) {
+			
+			List<ValidAddressBook> adbList = ViewFactory.defaultFactory.getPersistenceAcess().getAddressbook();
+			for (ValidAddressBook validAddressBook : adbList) {
+				getModelAccess().addUser(validAddressBook);
+			}
+			
+		}
+    }
+    
+    private static class AddressBookListCell extends ListCell<ValidAddressBook> {
+        @Override
+        public void updateItem(ValidAddressBook item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(ViewFactory.defaultFactory.resolveIcon("@"));
+                setText(item.toString());
+            }
+        }
+    }
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		//add list view category
+		categoryListView.getItems().add("Mail");
+		categoryListView.getItems().add("AddressBook");
+		categoryListView.getSelectionModel().select(0);
+		
+		addressbookListView.setVisible(false);
+		//load addressbook
+		loadAddressBook();
+		
+		addAccountBtn.setText("Add Account");
 		downloadAttachBtn.setDisable(true);
 		attachementsLabel.setText("");
 		saveAttachmentsService = new SaveAttachmentsService(attachProgress, downAttachLabel);

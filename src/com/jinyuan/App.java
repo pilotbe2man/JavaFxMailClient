@@ -19,8 +19,8 @@ public class App extends Application{
 		Scene scene;
 		if(ViewFactory.defaultFactory.getPersistenceAcess().validPersistencefound()){
 			scene = ViewFactory.defaultFactory.getMainScene();
-		} else{
-			scene = ViewFactory.defaultFactory.getAddAccountScene();
+		} else {
+			scene = ViewFactory.defaultFactory.getMailTypeSelectionScene();
 		}
 		primaryStage.setScene(scene);
 		primaryStage.show();				
