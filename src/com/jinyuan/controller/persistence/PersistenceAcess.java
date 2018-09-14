@@ -26,7 +26,7 @@ public class PersistenceAcess {
 	public void loadFromPersistence(){
 
 		try {
-			FileInputStream fileIn = new FileInputStream(System.getenv("APPDATA") + "validAccounts.ser");
+			FileInputStream fileIn = new FileInputStream(/*System.getenv("APPDATA") + */"validAccounts.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			persistedList = (List<ValidAccount>) in.readObject();
 			in.close();
@@ -48,7 +48,7 @@ public class PersistenceAcess {
 	 */
 	public void SavePersistence(){
 		try {
-			FileOutputStream fileOut = new FileOutputStream(System.getenv("APPDATA") + "validAccounts.ser");
+			FileOutputStream fileOut = new FileOutputStream(/*System.getenv("APPDATA") + */"validAccounts.ser");
 	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	         out.writeObject(modelAccess.getValidAccountList());
 	         out.close();
