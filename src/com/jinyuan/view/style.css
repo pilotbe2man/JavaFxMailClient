@@ -1,0 +1,11 @@
+AnchorPane{
+  -fx-padding: 0;
+  -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #99bbff,#ccddff);
+  -fx-background-repeat: repeat, no-repeat;
+  -fx-background-position: left top, left 19px top 15px ;
+}
+
+*{
+  -fx-border-radius: 0 0 0 0;
+  -fx-background-radius: 0 0 0 0;
+}
