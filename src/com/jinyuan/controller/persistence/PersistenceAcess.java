@@ -115,8 +115,7 @@ public class PersistenceAcess {
 			e.printStackTrace();
 		}
 		
-		modelAccess.getValidAccountList().clear();
-		modelAccess.getValidAddressBookList().clear();
+		modelAccess.clearModel();
 	}
 
 }

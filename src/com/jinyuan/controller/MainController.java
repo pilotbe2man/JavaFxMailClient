@@ -161,7 +161,9 @@ public class MainController extends AbstractController implements Initializable{
     	Stage stage = (Stage)categoryListView.getScene().getWindow();
     	stage.close();
     	
+    	folderUpdaterService.cancel();
     	ViewFactory.defaultFactory.getPersistenceAcess().clear();
+    	ViewFactory.defaultFactory.logout();
     	stage = new Stage();
     	stage.setScene(ViewFactory.defaultFactory.getMailTypeSelectionScene());
     	stage.show();

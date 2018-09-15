@@ -89,6 +89,7 @@ public class EmailAccountBean {
 			break;
 			
 		case "gmail":
+			properties.put("mail.smtp.starttls.enable", "true");
 			properties.put("mail.smtp.port", "587");
 			smtpsHost = "smtp.gmail.com";
 			inComingHost = "imap.gmail.com";

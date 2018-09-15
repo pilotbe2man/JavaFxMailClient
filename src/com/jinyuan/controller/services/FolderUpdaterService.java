@@ -23,6 +23,8 @@ public class FolderUpdaterService extends Service<Void>{
 			protected Void call() throws Exception {
 					for(;;){
 						try {
+							if (isCancelled())
+								return null;
 							Thread.sleep(2000);
 							if(modelAccess != null && FetchFoldersService.noServicesActive()){
 								System.out.println("Checking for folders!!");

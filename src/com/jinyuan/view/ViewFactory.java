@@ -25,6 +25,7 @@ public class ViewFactory {
 	public static ViewFactory defaultFactory = new ViewFactory();
 	
 	public static boolean mainViewInitialized = false;
+	public static boolean wasLogout = false;
 
 	private final String DEFAULT_CSS = "style.css";
 	private final String EMAIL_DETAILS_FXML = "EmailDetailsLayout.fxml";
@@ -204,6 +205,18 @@ public class ViewFactory {
 
 	public PersistenceAcess getPersistenceAcess() {
 		return persistenceAcess;
+	}
+	
+	public void didLogin() {
+		wasLogout = false;
+	}
+	
+	public boolean wasLogout() {
+		return wasLogout;
+	}
+	
+	public void logout() {
+		wasLogout = true;
 	}
 
 }

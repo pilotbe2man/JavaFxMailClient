@@ -81,6 +81,9 @@ public class AddAccountController extends AbstractController implements Initiali
     	
     	//TODO add props handling
     	statusLabel.setText("");
+    	ViewFactory.wasLogout = false;
+    	ViewFactory.mainViewInitialized = false;
+    	
     	CreateAndRegisterEmailAccountService createAndRegisterEmailAccountService = 
     			new CreateAndRegisterEmailAccountService(
     					addressField.getText(),

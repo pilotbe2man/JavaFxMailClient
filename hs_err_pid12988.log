@@ -1,0 +1,65 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000000000000000, pid=12988, tid=24579
+#
+# JRE version: Java(TM) SE Runtime Environment (10.0.2+13) (build 10.0.2+13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (10.0.2+13, mixed mode, tiered, compressed oops, g1 gc, bsd-amd64)
+# Problematic frame:
+# C  0x0000000000000000
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:52693 -javaagent:/Users/pilot/eclipse/java-photon/Eclipse.app/Contents/Eclipse/configuration/org.eclipse.osgi/231/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.jinyuan.App
+
+Host: iMac18,1 x86_64 3592 MHz, 8 cores, 16G, Darwin 17.7.0
+Time: Fri Sep 14 16:46:56 2018 PDT elapsed time: 59 seconds (0d 0h 0m 59s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f9ebb052800):  JavaThread "Signal Dispatcher" daemon [_thread_in_vm, id=24579, stack(0x00007000109a8000,0x0000700010aa8000)]
+
+Stack: [0x00007000109a8000,0x0000700010aa8000],  sp=0x0000700010aa6288,  free space=1016k
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  jdk.internal.misc.Signal.dispatch(I)V+25 java.base@10.0.2
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000000
+
+Register to memory mapping:
+
+RAX=0x00007fff92d9c070: __stack_chk_guard+0 in /usr/lib/system/libsystem_c.dylib at 0x00007fff5a2f9000
+RBX=0x0000000106030008: GCC_except_table26+0x11a8 in /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/libjimage.dylib at 0x000000010602c000
+RCX=0x0000000000000023 is an unknown value
+RDX=0x0000700010aa73c0 is pointing into the stack for thread: 0x00007f9ebb052800
+RSP=0x0000700010aa6288 is pointing into the stack for thread: 0x00007f9ebb052800
+RBP=0x0000700010aa6300 is pointing into the stack for thread: 0x00007f9ebb052800
+RSI=0x000000000000c8a3 is an unknown value
+RDI=0x0000000106030008: GCC_except_table26+0x11a8 in /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/libjimage.dylib at 0x000000010602c000
+R8 =0x0000700010aa73c0 is pointing into the stack for thread: 0x00007f9ebb052800
+R9 =0x0000700010aa72d0 is pointing into the stack for thread: 0x00007f9ebb052800
+R10=0x0000000105b5d250: AssumeMP+0 in /Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/server/libjvm.dylib at 0x0000000105200000
+R11=0xfffff06157383302 is an unknown value
+R12=0x00000001064c901c is an unknown value
+R13=0x00007f9eb9700e50 is an unknown value
+R14=0x0000700010aa73c0 is pointing into the stack for thread: 0x00007f9ebb052800
+R15=0x0000700010aa6330 is pointing into the stack for thread: 0x00007f9ebb052800
+
+
+Registers:
+RAX=0x00007fff92d9c070, RBX=0x0000000106030008, RCX=0x0000000000000023, RDX=0x0000700010aa73c0
+RSP=0x0000700010aa6288, RBP=0x0000700010aa6300, RSI=0x000000000000c8a3, RDI=0x0000000106030008
+R8 =0x0000700010aa73c0, R9 =0x0000700010aa72d0, R10=0x0000000105b5d250, R11=0xfffff06157383302
+R12=0x00000001064c901c, R13=0x00007f9eb9700e50, R14=0x0000700010aa73c0, R15=0x0000700010aa6330
+RIP=0x0000000000000000, EFLAGS=0x0000000000010206, ERR=0x0000000000000014
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x0000700010aa6288)
+0x0000700010aa6288:   000000010602e48d 0000000000000000
+0x0000700010aa6298:   0000000000000000 0000000000000000

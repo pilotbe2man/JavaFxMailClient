@@ -25,9 +25,29 @@ public class ModelAccess {
 	private ObservableList<ValidAddressBook> validAddressBookList = FXCollections.observableArrayList();
 	private EmailFolderBean<String> root = new EmailFolderBean<String>("", new ImageView());
 	
+	private EmailFolderBean<String> selectedFolder;
+
+	// needed for updater service
+	private List<Folder> folderList = new ArrayList<Folder>();
+
 	//mail type
 	private String mailType;
 
+	public void clearModel() {
+		emailAccounts.clear();
+		emailAccountsNames.clear();
+		validAccountList.clear();
+		validAddressBookList.clear();
+		root.getChildren().clear();
+		if (selectedFolder != null)
+			selectedFolder.getChildren().clear();
+		folderList.clear();
+	}
+	
+	public Map<String, EmailAccountBean> getEmailAccount() {
+		return emailAccounts;
+	}
+	
 	public ObservableList<String> getEmailAccountNames() {
 		return emailAccountsNames;
 	}
@@ -47,10 +67,6 @@ public class ModelAccess {
 	}
 
 	private EmailMessageBean selectedMessage;
-	private EmailFolderBean<String> selectedFolder;
-
-	// needed for updater service
-	private List<Folder> folderList = new ArrayList<Folder>();
 
 	public EmailMessageBean getSelectedMessage() {
 		return selectedMessage;
@@ -95,4 +111,5 @@ public class ModelAccess {
 	public void setMailType(String aType) {
 		mailType = aType;
 	}
+	
 }

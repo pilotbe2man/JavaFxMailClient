@@ -9,6 +9,7 @@ import javax.mail.event.MessageCountEvent;
 import com.jinyuan.controller.ModelAccess;
 import com.jinyuan.model.EmailAccountBean;
 import com.jinyuan.model.folder.EmailFolderBean;
+import com.jinyuan.view.ViewFactory;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -36,20 +37,36 @@ public class FetchFoldersService extends Service<Void>{
 			@Override
 			protected Void call() throws Exception {
 				NUMBER_OF_FETCHFOLDERSERVICES_ACTIVE++;
+				if (ViewFactory.defaultFactory.wasLogout()) {
+					System.out.print("main scene was not initialized!!!");
+					return null;
+				}
 				if(emailAccountBean != null){
 					Folder[] folders = emailAccountBean.getStore().getDefaultFolder().list();
 					for(Folder folder: folders){
+						
+						if (ViewFactory.defaultFactory.wasLogout()) {
+							System.out.print("main scene was not initialized!!!");
+							return null;
+						}
+						
 						EmailFolderBean<String> item = new EmailFolderBean<String>(folder.getName(), folder.getFullName());
 						foldersRoot.getChildren().add(item);
 						item.setExpanded(true);
 						modelAccess.addFolder(folder);
 						addMessageListenerToFolder(folder, item);
 						System.out.println("added " +  folder.getName());
-						
+
 						Folder[] subFolders = folder.list();
 						FetchMessagesOnFolderService fetchMessagesOnFolderService = new FetchMessagesOnFolderService(item, folder);
 						fetchMessagesOnFolderService.restart();
 						for(Folder subFolder: subFolders){
+							
+							if (ViewFactory.defaultFactory.wasLogout()) {
+								System.out.print("main scene was not initialized!!!");
+								return null;
+							}
+
 							EmailFolderBean<String> subItem = new EmailFolderBean<String>(subFolder.getName(), subFolder.getFullName());
 							item.getChildren().add(subItem);
 							modelAccess.addFolder(subFolder);
