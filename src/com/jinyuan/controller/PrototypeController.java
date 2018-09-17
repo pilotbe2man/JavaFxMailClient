@@ -1,20 +1,16 @@
 package com.jinyuan.controller;
 
-import com.jinyuan.controller.persistence.ValidAddressBook;
 import com.jinyuan.view.ViewFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.util.Callback;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +85,12 @@ public class PrototypeController extends AbstractController implements Initializ
     @FXML
     ListView categoryItemListView;
 
+    @FXML
+    ListView mailItemListView;
+
+    @FXML
+    WebView mailContentWebView;
+
     public PrototypeController(ModelAccess modelAccess) {
         super(modelAccess);
     }
@@ -97,6 +99,7 @@ public class PrototypeController extends AbstractController implements Initializ
     List<String> mAryCategory = new ArrayList<>();
     List<String> mAryMailItems = new ArrayList<>();
     List<String> mAryAddressBookItems = new ArrayList<>();
+    List<String> mAryMailListItems = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -112,12 +115,13 @@ public class PrototypeController extends AbstractController implements Initializ
         categoryListView.getItems().addAll(mAryCategory);
         categoryListView.getSelectionModel().select(0);
 
-        mAryMailItems.add("RSS");
+        mAryMailItems.add("RSS Feeds");
         mAryMailItems.add("Drafts");
         mAryMailItems.add("Outbox");
+        mAryMailItems.add("Junk E-mail");
         mAryMailItems.add("Inbox");
         mAryMailItems.add("Sent Items");
-        mAryMailItems.add("Delete Items");
+        mAryMailItems.add("Deleted Items");
         mAryMailItems.add("Search Folders");
 
         mAryAddressBookItems.add("Test1@outlook.com");
@@ -129,18 +133,47 @@ public class PrototypeController extends AbstractController implements Initializ
 
         categoryItemListView.getItems().addAll(mAryMailItems);
 
+        mAryMailListItems.add("From Test1@outlook.com");
+        mAryMailListItems.add("From Test2@outlook.com");
+        mAryMailListItems.add("From Test3@outlook.com");
+        mAryMailListItems.add("From Test4@outlook.com");
+        mAryMailListItems.add("From Test5@outlook.com");
+        mAryMailListItems.add("From Test6@outlook.com");
+        mAryMailListItems.add("From Test7@outlook.com");
+        mAryMailListItems.add("From Test8@outlook.com");
+
+        mailItemListView.getItems().addAll(mAryMailListItems);
+
+        WebEngine engine = mailContentWebView.getEngine();
+        String url = "http://java2s.com/";
+        engine.load(url);
+
+        categoryItemListView.getSelectionModel().select("Inbox");
+        mailItemListView.getSelectionModel().select(5);
+
+        //<-- test end
+
         categoryListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
 
             @Override
             public ListCell<String> call(ListView<String> param) {
                 // TODO Auto-generated method stub
-                return new MailListCell();
+                return new CategoryListCell();
+            }
+        });
+
+        categoryItemListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                // TODO Auto-generated method stub
+                return new CategoryListItemCell();
             }
         });
     }
 
     //for test
-    private static class MailListCell extends ListCell<String> {
+    private class CategoryListCell extends ListCell<String> {
         @Override
         public void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
@@ -148,8 +181,27 @@ public class PrototypeController extends AbstractController implements Initializ
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(ViewFactory.defaultFactory.resoveMailBoxIcon(item));
+                setGraphic(ViewFactory.defaultFactory.resoveCategoryIcon(item));
                 setText(item);
+            }
+        }
+    }
+
+    //for test
+    private class CategoryListItemCell extends ListCell<String> {
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setText(item);
+                if (isSelectedCategoryMail()) {
+                    setGraphic(ViewFactory.defaultFactory.resoveMailBoxIcon(item));
+                } else {
+                    setGraphic(ViewFactory.defaultFactory.resoveIconWithName("images/user.png"));
+                }
             }
         }
     }
@@ -161,10 +213,14 @@ public class PrototypeController extends AbstractController implements Initializ
         System.out.println("OnClicked: Category list index = " + categoryListView.getSelectionModel().getSelectedItem());
 
         categoryItemListView.getItems().clear();
-        if (categoryListView.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Mail"))
+        if (isSelectedCategoryMail())
             categoryItemListView.getItems().addAll(mAryMailItems);
         else
             categoryItemListView.getItems().addAll(mAryAddressBookItems);
+    }
+
+    public boolean isSelectedCategoryMail() {
+        return categoryListView.getSelectionModel().getSelectedItem().toString().equalsIgnoreCase("Mail");
     }
 
     /**

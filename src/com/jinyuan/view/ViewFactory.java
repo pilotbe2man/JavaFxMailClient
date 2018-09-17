@@ -129,11 +129,51 @@ public class ViewFactory {
 		}
 	}
 
+	public Node resoveCategoryIcon(String name) {
+		try {
+			String iconName = name;
+			switch (name) {
+				case "Mail":
+					iconName = "images/mail.png";
+					break;
+				case "AddressBook":
+					iconName = "images/contacts.png";
+					break;
+			}
+			return new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ImageView();
+		}
+	}
+
 	public Node resoveMailBoxIcon(String name) {
 		try {
 			String iconName = name;
 			switch (name) {
-				case "RSS":
+				case "RSS Feeds":
+					iconName = "images/rss.png";
+					break;
+				case "Drafts":
+					iconName = "images/drafts.png";
+					break;
+				case "Outbox":
+					iconName = "images/outbox.png";
+					break;
+				case "Junk E-mail":
+					iconName = "images/junk_mail.png";
+					break;
+				case "Inbox":
+					iconName = "images/inbox.png";
+					break;
+				case "Sent Items":
+					iconName = "images/sent.png";
+					break;
+				case "Deleted Items":
+					iconName = "images/trash.png";
+					break;
+				case "Search Folders":
+					iconName = "images/search_folder.png";
 					break;
 			}
 			return new ImageView(new Image(getClass().getResourceAsStream(iconName)));
