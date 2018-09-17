@@ -73,30 +73,76 @@
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
+                           <tooltip>
+                              <Tooltip text="New Mail Message" />
+                           </tooltip>
                         </MenuButton>
                         <Separator orientation="VERTICAL" />
-                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Print" />
-                        <Button fx:id="moveToFolderButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="MoveToFolder" />
-                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Delete" />
+                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Print">
+                           <tooltip>
+                              <Tooltip text="Print(Microsoft print to PDF) (Ctrl+P)" />
+                           </tooltip></Button>
+                        <Button fx:id="moveToFolderButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="MoveToFolder">
+                           <tooltip>
+                              <Tooltip text="Move To Folder" />
+                           </tooltip></Button>
+                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Delete">
+                           <tooltip>
+                              <Tooltip text="Delete(Crtl+D)" />
+                           </tooltip></Button>
                         <Separator layoutX="87.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply(R)" />
-                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply To All(L)" />
-                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward(W)" />
+                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply(R)">
+                           <tooltip>
+                              <Tooltip text="Reply(Ctrl+R)" />
+                           </tooltip></Button>
+                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply To All(L)">
+                           <tooltip>
+                              <Tooltip text="Reply to All(Ctrl+Shift+R)" />
+                           </tooltip></Button>
+                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward(W)">
+                           <tooltip>
+                              <Tooltip text="Forward(Ctrl+F)" />
+                           </tooltip></Button>
                         <Separator layoutX="252.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="categoriseButton" layoutX="402.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Categorize" />
-                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Follow Up" />
+                        <Button fx:id="categoriseButton" layoutX="402.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Categorize">
+                           <tooltip>
+                              <Tooltip text="Categorize" />
+                           </tooltip></Button>
+                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Follow Up">
+                           <tooltip>
+                              <Tooltip text="Follow Up" />
+                           </tooltip></Button>
                         <Separator layoutX="484.0" layoutY="10.0" orientation="VERTICAL" />
                         <MenuButton fx:id="sendReceiveButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Send/Receive(C)">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Action 1" />
                               <MenuItem mnemonicParsing="false" text="Action 2" />
                            </items>
+                           <tooltip>
+                              <Tooltip text="Send/Receive" />
+                           </tooltip>
                         </MenuButton>
-                        <Button fx:id="oneNoteButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="OneNote" />
+                        <Button fx:id="oneNoteButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="OneNote">
+                           <tooltip>
+                              <Tooltip text="Send selected e-mail to OneNote(Unfiled Notes)" />
+                           </tooltip>
+                        </Button>
                         <Separator layoutX="686.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="addressBookButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Address Book" />
-                        <ComboBox fx:id="addressBookComboBox" prefWidth="150.0" styleClass="toolBarbutton" />
-                        <Button fx:id="helpButton" layoutX="898.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Help" />
+                        <Button fx:id="addressBookButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Address Book">
+                           <tooltip>
+                              <Tooltip text="Address Book (Ctrl+Shift+B)" />
+                           </tooltip>
+                        </Button>
+                        <ComboBox fx:id="addressBookComboBox" prefWidth="150.0" styleClass="toolBarbutton">
+                           <tooltip>
+                              <Tooltip text="Find a Contact" />
+                           </tooltip>
+                        </ComboBox>
+                        <Button fx:id="helpButton" layoutX="898.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Help">
+                           <tooltip>
+                              <Tooltip text="Help(F1)" />
+                           </tooltip>
+                        </Button>
                      </items>
                   </ToolBar>
                </children>

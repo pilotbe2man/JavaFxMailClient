@@ -110,6 +110,29 @@ public class PrototypeController extends AbstractController implements Initializ
         mWidthOfLeftAnchorPane = leftAnchorPane.getMinWidth();
 
         //init list for test
+        initTestValues();
+        //<-- test end
+
+        categoryListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                // TODO Auto-generated method stub
+                return new CategoryListCell();
+            }
+        });
+
+        categoryItemListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+
+            @Override
+            public ListCell<String> call(ListView<String> param) {
+                // TODO Auto-generated method stub
+                return new CategoryListItemCell();
+            }
+        });
+    }
+
+    void initTestValues() {
         mAryCategory.add("Mail");
         mAryCategory.add("AddressBook");
         categoryListView.getItems().addAll(mAryCategory);
@@ -150,26 +173,6 @@ public class PrototypeController extends AbstractController implements Initializ
 
         categoryItemListView.getSelectionModel().select("Inbox");
         mailItemListView.getSelectionModel().select(5);
-
-        //<-- test end
-
-        categoryListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                // TODO Auto-generated method stub
-                return new CategoryListCell();
-            }
-        });
-
-        categoryItemListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-
-            @Override
-            public ListCell<String> call(ListView<String> param) {
-                // TODO Auto-generated method stub
-                return new CategoryListItemCell();
-            }
-        });
     }
 
     //for test
@@ -209,8 +212,10 @@ public class PrototypeController extends AbstractController implements Initializ
     @FXML
     public void handleCategoryClick() {
 
-        categoryNameLabel.setText(categoryListView.getSelectionModel().getSelectedItem().toString());
-        System.out.println("OnClicked: Category list index = " + categoryListView.getSelectionModel().getSelectedItem());
+        String catTitle = categoryListView.getSelectionModel().getSelectedItem().toString();
+        System.out.println("OnClicked: Category list index = " + catTitle);
+
+        categoryNameLabel.setText(catTitle);
 
         categoryItemListView.getItems().clear();
         if (isSelectedCategoryMail())

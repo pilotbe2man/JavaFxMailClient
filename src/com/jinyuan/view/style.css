@@ -99,3 +99,13 @@ AnchorPane{
 .collapseButton:pressed {
   -fx-background-color: #ffa81f;
 }
+
+.tooltip {
+  -fx-border-width: 1;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-border-color: grey;
+  -fx-background-color: #e7e7e7;
+  -fx-text-fill: black;
+  -fx-font-size: 1em; /* 12 */
+}
