@@ -119,7 +119,29 @@ public class ViewFactory {
 
 		return returnIcon;
 	}
-	
+
+	public Node resoveIconWithName(String name) {
+		try {
+			return new ImageView(new Image(getClass().getResourceAsStream(name)));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ImageView();
+		}
+	}
+
+	public Node resoveMailBoxIcon(String name) {
+		try {
+			String iconName = name;
+			switch (name) {
+				case "RSS":
+					break;
+			}
+			return new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ImageView();
+		}
+	}
 
 	public Image emailIcon(String value) {
 		

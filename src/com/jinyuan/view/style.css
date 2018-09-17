@@ -13,3 +13,43 @@ AnchorPane{
 .appBgWhiteColor {
   -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #ffffff, #ffffff);
 }
+
+.toolBarbutton{
+  -fx-border-color: transparent;
+  -fx-border-width: 0;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+  -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-font-size: 1em; /* 12 */
+  -fx-text-fill: black;
+}
+
+.toolBarbutton:hover {
+  -fx-border-color: transparent;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.toolBarbutton:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.collapseButton{
+  -fx-border-color: transparent;
+  -fx-border-width: 0;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+  -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-font-size: 1em; /* 12 */
+  -fx-text-fill: black;
+}
+
+.collapseButton:hover {
+  -fx-border-color: transparent;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.collapseButton:pressed {
+  -fx-background-color: #ffa81f;
+}

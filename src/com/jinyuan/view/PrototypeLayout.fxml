@@ -20,13 +20,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="721.0" prefWidth="1096.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="614.0" prefWidth="1314.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <MenuBar>
+                  <MenuBar prefHeight="0.0" prefWidth="1157.0">
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
@@ -67,79 +67,79 @@
                   </MenuBar>
                   <ToolBar>
                      <items>
-                        <MenuButton mnemonicParsing="false" text="New(N)">
+                        <MenuButton fx:id="newMailMenuButton" mnemonicParsing="false" styleClass="toolBarbutton" text="New(N)">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </MenuButton>
                         <Separator orientation="VERTICAL" />
-                        <Button mnemonicParsing="false" text="Print" />
-                        <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" text="Attach" />
-                        <Button layoutX="153.0" layoutY="10.0" mnemonicParsing="false" text="Delete" />
+                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Print" />
+                        <Button fx:id="moveToFolderButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="MoveToFolder" />
+                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Delete" />
                         <Separator layoutX="87.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" text="Reply(R)" />
-                        <Button layoutX="262.0" layoutY="10.0" mnemonicParsing="false" text="AllReply(L)" />
-                        <Button layoutX="307.0" layoutY="10.0" mnemonicParsing="false" text="Forward(W)" />
+                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply(R)" />
+                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply To All(L)" />
+                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward(W)" />
                         <Separator layoutX="252.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button layoutX="402.0" layoutY="10.0" mnemonicParsing="false" text="Customize" />
-                        <Button layoutX="494.0" layoutY="10.0" mnemonicParsing="false" text="Follow" />
+                        <Button fx:id="categoriseButton" layoutX="402.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Categorize" />
+                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Follow Up" />
+                        <Separator layoutX="484.0" layoutY="10.0" orientation="VERTICAL" />
+                        <MenuButton fx:id="sendReceiveButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Send/Receive(C)">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                        <Button fx:id="oneNoteButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="OneNote" />
+                        <Separator layoutX="686.0" layoutY="10.0" orientation="VERTICAL" />
+                        <Button fx:id="addressBookButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Address Book" />
+                        <ComboBox fx:id="addressBookComboBox" prefWidth="150.0" styleClass="toolBarbutton" />
+                        <Button fx:id="helpButton" layoutX="898.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Help" />
                      </items>
                   </ToolBar>
                </children>
             </VBox>
          </top>
          <bottom>
-            <Label text="150 items" BorderPane.alignment="CENTER_LEFT">
+            <Label fx:id="itemsLabel" text="150 items" BorderPane.alignment="CENTER_LEFT">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
             </Label>
          </bottom>
          <center>
-            <SplitPane dividerPositions="0.20109689213893966, 0.4606946983546618" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane dividerPositions="0.14190193164933135, 0.4413075780089153" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="425.0" prefWidth="139.0">
+                  <AnchorPane fx:id="leftAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="745.0" prefWidth="248.0">
                      <children>
-                        <VBox prefHeight="425.0" prefWidth="158.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane styleClass="appBgWhiteColor">
+                              <HBox alignment="CENTER" styleClass="appBgWhiteColor" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                    <Label fx:id="categoryNameLabel" text="Mail" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <AnchorPane layoutX="66.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="appBgWhiteColor" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="105.0" styleClass="appBgWhiteColor">
-                                             <children>
-                                                <Label text="Mail" />
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </HBox>
-                                          <HBox alignment="CENTER_RIGHT" layoutX="42.0" layoutY="10.0" prefHeight="35.0" prefWidth="184.0" styleClass="appBgWhiteColor">
-                                             <children>
-                                                <Button mnemonicParsing="false" text="&lt;&lt;" />
-                                             </children>
-                                          </HBox>
+                                          <Button fx:id="leftPanCollapseButton" mnemonicParsing="false" onAction="#handleClickedOnCollapseButton" styleClass="collapseButton" text="&lt;&lt;" />
                                        </children>
-                                    </HBox>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </AnchorPane>
                                  </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="412.0" prefWidth="217.0">
-                                 <children>
-                                    <ListView prefHeight="413.0" prefWidth="217.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane>
-                                 <children>
-                                    <ListView prefHeight="194.0" prefWidth="217.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
+                              </HBox>
+                              <ListView fx:id="categoryItemListView" prefHeight="553.0" prefWidth="155.0" />
+                              <ListView fx:id="categoryListView" onMouseClicked="#handleCategoryClick" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="425.0" prefWidth="142.0" styleClass="appBgWhiteColor" />
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="appBgWhiteColor" />
+                <AnchorPane fx:id="centerAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="425.0" prefWidth="142.0" styleClass="appBgWhiteColor" />
+                <AnchorPane fx:id="rightAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="appBgWhiteColor" />
               </items>
             </SplitPane>
          </center>
