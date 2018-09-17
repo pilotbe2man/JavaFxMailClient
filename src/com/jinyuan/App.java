@@ -10,18 +10,18 @@ public class App extends Application{
 	
 	public static void main(String[] args) {
 		launch(args);
-		
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
 		Scene scene;
-		if(ViewFactory.defaultFactory.getPersistenceAcess().validPersistencefound()){
-			scene = ViewFactory.defaultFactory.getMainScene();
-		} else {
-			scene = ViewFactory.defaultFactory.getMailTypeSelectionScene();
-		}
+//		if(ViewFactory.defaultFactory.getPersistenceAcess().validPersistencefound()){
+//			scene = ViewFactory.defaultFactory.getMainScene();
+//		} else {
+//			scene = ViewFactory.defaultFactory.getMailTypeSelectionScene();
+//		}
+		scene = ViewFactory.defaultFactory.getPrototypeScene();
 		primaryStage.setScene(scene);
 		primaryStage.show();				
 		

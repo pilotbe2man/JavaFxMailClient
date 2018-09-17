@@ -9,3 +9,7 @@ AnchorPane{
   -fx-border-radius: 0 0 0 0;
   -fx-background-radius: 0 0 0 0;
 }
+
+.appBgWhiteColor {
+  -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #ffffff, #ffffff);
+}

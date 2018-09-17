@@ -2,14 +2,7 @@ package com.jinyuan.view;
 
 import javax.naming.OperationNotSupportedException;
 
-import com.jinyuan.controller.AbstractController;
-import com.jinyuan.controller.AddAccountController;
-import com.jinyuan.controller.AddUserController;
-import com.jinyuan.controller.ComposeEmailController;
-import com.jinyuan.controller.EmailDetailsController;
-import com.jinyuan.controller.MailTypeSelectionController;
-import com.jinyuan.controller.MainController;
-import com.jinyuan.controller.ModelAccess;
+import com.jinyuan.controller.*;
 import com.jinyuan.controller.persistence.PersistenceAcess;
 import com.jinyuan.model.EmailMessageBean;
 
@@ -23,9 +16,9 @@ import javafx.scene.image.ImageView;
 public class ViewFactory {
 
 	public static ViewFactory defaultFactory = new ViewFactory();
-	
+
 	public static boolean mainViewInitialized = false;
-	public static boolean wasLogout = false;
+	public static boolean isLogout = false;
 
 	private final String DEFAULT_CSS = "style.css";
 	private final String EMAIL_DETAILS_FXML = "EmailDetailsLayout.fxml";
@@ -34,11 +27,12 @@ public class ViewFactory {
 	private final String ADD_ACCOUNT_EMAIL_FXML = "AddAccountLayout.fxml";
 	private final String ADD_USER_EMAIL_FXML = "AddUserLayout.fxml";
 	private final String MAIL_TYPE_SELECTION_FXML = "MailTypeSelectionLayout.fxml";
+	private final String PROTOTYPE_FXML = "PrototypeLayout.fxml";
 
 	private ModelAccess modelAccess = new ModelAccess();
 	private PersistenceAcess persistenceAcess = new PersistenceAcess(modelAccess);
 	Scene currentMailScene;
-	
+
 	public Scene getMainScene() throws OperationNotSupportedException {
 		if (!mainViewInitialized) {
 			AbstractController mainController = new MainController(modelAccess);
@@ -48,6 +42,11 @@ public class ViewFactory {
 			throw new OperationNotSupportedException("Main Scene allready initialized!!!!");
 		}
 
+	}
+
+	public Scene getPrototypeScene() {
+		AbstractController emailDetailsController = new PrototypeController(modelAccess);
+		return initializeScene(PROTOTYPE_FXML, emailDetailsController);
 	}
 
 	public Scene getEmailDetailsScene() {
@@ -208,15 +207,15 @@ public class ViewFactory {
 	}
 	
 	public void didLogin() {
-		wasLogout = false;
+		isLogout = false;
 	}
 	
 	public boolean wasLogout() {
-		return wasLogout;
+		return isLogout;
 	}
 	
 	public void logout() {
-		wasLogout = true;
+		isLogout = true;
 	}
 
 }

@@ -9,6 +9,9 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.Transport;
+import javax.mail.URLName;
+
+import com.sun.mail.pop3.POP3SSLStore;
 
 public class EmailAccountBean {
 	
@@ -81,7 +84,7 @@ public class EmailAccountBean {
 			break;
 			
 		case "hotmail":
-			
+		case "outlook":
 			smtpsHost = "smtp-mail.outlook.com";
 			inComingHost = "imap-mail.outlook.com";
 			outGoingHost = "smtp-mail.outlook.com";
@@ -89,12 +92,20 @@ public class EmailAccountBean {
 			break;
 			
 		case "gmail":
-			properties.put("mail.smtp.starttls.enable", "true");
-			properties.put("mail.smtp.port", "587");
-			smtpsHost = "smtp.gmail.com";
-			inComingHost = "imap.gmail.com";
-			outGoingHost = "smtp.gmail.com";
-			break;
+		{
+			try {
+				gmailConnect();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			return;
+		}
+			
+//			smtpsHost = "smtp.gmail.com";
+//			inComingHost = "pop.gmail.com";
+//			outGoingHost = "smtp.gmail.com";
+//			break;
 			
 		case "fox":
 			smtpsHost = "smtp.qq.com";
@@ -118,12 +129,6 @@ public class EmailAccountBean {
 			outGoingHost = "smtp.sohu.com";
 			break;
 			
-		case "outlook":
-			smtpsHost = "smtp-mail-outlook.com";
-			inComingHost = "imap-mail.outlook.com";
-			outGoingHost = "smtp-mail-outlook.com";
-			break;
-			
 		default:
 			smtpsHost = "";
 			inComingHost = "";
@@ -132,8 +137,8 @@ public class EmailAccountBean {
 			
 		}
 		
-		properties.put("mail.smtps.host", smtpsHost);
-		properties.put("mail.smtps.auth", "true");
+//		properties.put("mail.smtps.host", smtpsHost);
+//		properties.put("mail.smtps.auth", "true");
 		properties.put("incomingHost", inComingHost);
 		properties.put("outgoingHost", outGoingHost);
 
@@ -162,6 +167,35 @@ public class EmailAccountBean {
 		
 	}
 	
+	public void gmailConnect() {
+
+		String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+
+		Properties pop3Props = new Properties();
+
+		pop3Props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
+		pop3Props.setProperty("mail.pop3.socketFactory.fallback", "false");
+		pop3Props.setProperty("mail.pop3.port",  "995");
+		pop3Props.setProperty("mail.pop3.socketFactory.port", "995");
+
+		URLName url = new URLName("pop3", "pop.gmail.com", 995, "", emailAdress, password);
+
+		session = Session.getInstance(pop3Props, null);
+		store = new POP3SSLStore(session, url);
+		try {
+			store.connect();
+			loginState = EmailConstants.LOGIN_STATE_SUCCEDED;
+		} catch (AuthenticationFailedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			loginState = EmailConstants.LOGIN_STATE_FAILED_BY_CREDENTIALS;
+		} catch(Exception e){
+			e.printStackTrace();
+			loginState = EmailConstants.LOGIN_STATE_FAILED_BY_NETWORK;
+		}
+
+	}
+	 
 	public Transport transportConnect() throws MessagingException{
 		Transport transport = session.getTransport();
 		transport.connect(getProperties().getProperty("outgoingHost"),
