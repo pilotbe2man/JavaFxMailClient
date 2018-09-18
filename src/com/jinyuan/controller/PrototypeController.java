@@ -370,16 +370,12 @@ public class PrototypeController extends AbstractController implements Initializ
     void handleClickedOnAdressBookCatButton() {
         categoryListView.getSelectionModel().select(1);
         handleCategoryClick();
-        addressBookCatButton.setSelected(true);
-        mailCatButton.setSelected(false);
     }
 
     @FXML
     void handleClickedOnMailCatButton() {
         categoryListView.getSelectionModel().select(0);
         handleCategoryClick();
-        addressBookCatButton.setSelected(false);
-        mailCatButton.setSelected(true);
     }
 
     @FXML
@@ -393,9 +389,31 @@ public class PrototypeController extends AbstractController implements Initializ
 
             initMailBoxTable(currentSelectedMailBoxItem);
 
+            ObservableList<Node> nodes = mainSplitePane.getItems();
+            boolean isExist = false;
+            for (Node eachNode: nodes) {
+                if (eachNode.getId().equalsIgnoreCase("rightAnchorPane")) {
+                    isExist = true;
+                    break;
+                }
+            }
+
+            if (!isExist)
+                mainSplitePane.getItems().add(rightAnchorPane);
+
+            mailItemTableView.setVisible(true);
+
+            addressBookCatButton.setSelected(false);
+            mailCatButton.setSelected(true);
         } else {
             catTitle = "Address Book";
             categoryNameLabel1.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/contacts.png"));
+
+            mainSplitePane.getItems().remove(rightAnchorPane);
+            mailItemTableView.setVisible(false);
+
+            addressBookCatButton.setSelected(true);
+            mailCatButton.setSelected(false);
         }
         categoryNameLabel1.setText(catTitle);
     }

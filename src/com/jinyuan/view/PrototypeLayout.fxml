@@ -220,7 +220,7 @@
                               </AnchorPane>
                               <AnchorPane HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <VBox prefHeight="200.0" prefWidth="100.0" styleClass="appBgWhiteColor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <VBox fx:id="searchVBox">
                                              <children>
