@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5aa506b-fef1-4e96-a5a1-509fb1527370" name="Default Changelist" comment="">
+    <list default="true" id="d5aa506b-fef1-4e96-a5a1-509fb1527370" name="Default Changelist" comment="added the properties of resource bundle for multi lang.">
       <change beforePath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,7 +50,7 @@
           <entry key="classpath" value="6" />
           <entry key="css" value="611" />
           <entry key="fxml" value="28" />
-          <entry key="java" value="5141" />
+          <entry key="java" value="5142" />
           <entry key="properties" value="126" />
           <entry key="txt" value="320" />
         </counts>
@@ -60,7 +59,7 @@
         <counts>
           <entry key="CSS" value="611" />
           <entry key="Eclipse" value="6" />
-          <entry key="JAVA" value="5141" />
+          <entry key="JAVA" value="5142" />
           <entry key="PLAIN_TEXT" value="320" />
           <entry key="Properties" value="126" />
           <entry key="XML" value="28" />
@@ -87,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
+            <state relative-caret-position="-1290">
+              <caret line="205" column="64" lean-forward="true" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -124,8 +123,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="404" lean-forward="true" selection-start-line="404" selection-end-line="404" />
+            <state relative-caret-position="309">
+              <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1699#1700#0" expanded="true" />
@@ -296,13 +295,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jinyuan" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="EmailDev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EmailDev" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jinyuan" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -314,7 +306,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537293053949" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537293316251" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -374,7 +366,7 @@
       <workItem from="1537102698464" duration="6387000" />
       <workItem from="1537122431262" duration="5503000" />
       <workItem from="1537146962531" duration="10022000" />
-      <workItem from="1537164884924" duration="54595000" />
+      <workItem from="1537164884924" duration="55015000" />
     </task>
     <task id="LOCAL-00001" summary="made the prototype as the mock up document.">
       <created>1537152987361</created>
@@ -432,17 +424,24 @@
       <option name="project" value="LOCAL" />
       <updated>1537289782703</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added the properties of resource bundle for multi lang.">
+      <created>1537292988462</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537292988462</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76507000" />
+    <option name="totallyTimeSpent" value="76927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -451,7 +450,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21451788" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21451788" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2340195" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -652,14 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="209" column="61" selection-start-line="209" selection-start-column="61" selection-end-line="209" selection-end-column="61" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -699,10 +690,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1290">
+          <caret line="205" column="64" lean-forward="true" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="404" lean-forward="true" selection-start-line="404" selection-end-line="404" />
+        <state relative-caret-position="309">
+          <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1699#1700#0" expanded="true" />

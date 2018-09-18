@@ -398,6 +398,7 @@ public class PrototypeController extends AbstractController implements Initializ
                 }
             }
 
+            
             if (!isExist)
                 mainSplitePane.getItems().add(rightAnchorPane);
 
