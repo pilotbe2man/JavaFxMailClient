@@ -13,6 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class ViewFactory {
 
 	public static ViewFactory defaultFactory = new ViewFactory();
@@ -122,7 +125,10 @@ public class ViewFactory {
 
 	public Node resolveIconWithName(String name) {
 		try {
-			return new ImageView(new Image(getClass().getResourceAsStream(name)));
+			ImageView iv = new ImageView(new Image(getClass().getResourceAsStream(name)));
+			iv.setFitWidth(16);
+			iv.setFitHeight(16);
+			return iv;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ImageView();
@@ -140,14 +146,44 @@ public class ViewFactory {
 					iconName = "images/contacts.png";
 					break;
 			}
-			return new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+			ImageView iv = new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+			iv.setFitWidth(16);
+			iv.setFitHeight(16);
+			return iv;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ImageView();
 		}
 	}
 
-	public Node resolveMailBoxIcon(String name) {
+	public Node resolveMailCategoryIcon(String name) {
+		try {
+			String iconName = name;
+			switch (name) {
+				case "Important":
+					iconName = "images/mail_cat_important.png";
+					break;
+				case "Normal":
+					iconName = "images/mail_cat_normal.png";
+					break;
+				case "Emergency":
+					iconName = "images/mail_cat_emergency.png";
+					break;
+				default:
+					iconName = "images/mail_cat_normal.png";
+					break;
+			}
+			ImageView iv = new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+			iv.setFitWidth(16);
+			iv.setFitHeight(16);
+			return iv;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ImageView();
+		}
+	}
+
+	public Node resolveMailBoxListItemIcon(String name) {
 		try {
 			String iconName = name;
 			switch (name) {
@@ -176,7 +212,10 @@ public class ViewFactory {
 					iconName = "images/search_folder.png";
 					break;
 			}
-			return new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+			ImageView iv = new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+			iv.setFitWidth(16);
+			iv.setFitHeight(16);
+			return iv;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ImageView();
@@ -251,7 +290,8 @@ public class ViewFactory {
 		Parent parent;
 		Scene scene;
 		try {
-			loader = new FXMLLoader(getClass().getResource(fxmlPath));
+			ResourceBundle bundle = ResourceBundle.getBundle("com/jinyuan/resources/lang", Locale.getDefault());
+			loader = new FXMLLoader(getClass().getResource(fxmlPath), bundle);
 			loader.setController(controller);
 			parent = loader.load();
 		} catch (Exception e) {

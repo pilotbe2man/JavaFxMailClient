@@ -12,9 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Callback;
@@ -115,10 +118,31 @@ public class PrototypeController extends AbstractController implements Initializ
     WebView mailContentWebView;
 
     @FXML
-    Button mailCatButton;
+    ToggleButton mailCatButton;
 
     @FXML
-    Button adressBookCatButton;
+    ToggleButton addressBookCatButton;
+
+    //search box for mail category
+    @FXML
+    ComboBox searchComboBox;
+
+    @FXML
+    Button exSearchButton;
+
+    @FXML
+    FlowPane exSearchFlowPane;
+
+    @FXML
+    MenuButton addCriteriaButton;
+
+    @FXML
+    VBox searchVBox;
+
+    @FXML
+    Label categoryNameLabel1;
+
+    String currentSelectedMailBoxItem = "";
 
     //divider postions of the mailSplitPane;
     double[] mDivPosOfMainSplitPane;
@@ -135,13 +159,16 @@ public class PrototypeController extends AbstractController implements Initializ
 
         initCategoryButtons();
         initToolbarButtons();
-
-        //hide expand pan and button
-        categoryListHBox.getChildren().remove(expandAnchorPane);
+        initSearchCategory();
 
         //init list for test
         initTestValues();
         //<-- test end
+
+        handleClickedOnMailCatButton();
+
+        //hide expand pan and button
+        categoryListHBox.getChildren().remove(expandAnchorPane);
 
         categoryListView.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
 
@@ -161,6 +188,25 @@ public class PrototypeController extends AbstractController implements Initializ
             }
         });
     }
+
+    void initSearchCategory() {
+        searchVBox.getChildren().remove(searchComboBox);
+        searchVBox.getChildren().remove(exSearchButton);
+        searchVBox.getChildren().remove(exSearchFlowPane);
+        searchVBox.getChildren().remove(addCriteriaButton);
+
+        searchComboBox.setEditable(true);
+        exSearchButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/arrows_down.png"));
+        exSearchButton.setText("");
+    }
+
+    final ObservableList<MailItem> data = FXCollections.observableArrayList(
+            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 09:30:34", "34KB"),
+            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 10:30:34", "23KB"),
+            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 11:30:34", "20KB"),
+            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 12:30:34", "30KB"),
+            new MailItem("SoSo", "michael.brown@example.com", "Indeed job growing", "2018-09-18 12:30:34", "40KB")
+    );
 
     void initTestValues() {
         mAryCategory.add("Mail");
@@ -186,28 +232,6 @@ public class PrototypeController extends AbstractController implements Initializ
 
         categoryItemListView.getItems().addAll(mAryMailItems);
 
-        final ObservableList<MailItem> data = FXCollections.observableArrayList(
-                new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 09:30:34", "34KB"),
-                new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 10:30:34", "23KB"),
-                new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 11:30:34", "20KB"),
-                new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 12:30:34", "30KB"),
-                new MailItem("SoSo", "michael.brown@example.com", "Indeed job growing", "2018-09-18 12:30:34", "40KB")
-        );
-
-        TableColumn categoryCol = (TableColumn) mailItemTableView.getColumns().get(0);
-        TableColumn fromCol = (TableColumn) mailItemTableView.getColumns().get(1);
-        TableColumn subjectCol = (TableColumn) mailItemTableView.getColumns().get(2);
-        TableColumn receivedDateCol = (TableColumn) mailItemTableView.getColumns().get(3);
-        TableColumn sizeCol = (TableColumn) mailItemTableView.getColumns().get(4);
-
-        categoryCol.setCellValueFactory(new PropertyValueFactory("category"));
-        fromCol.setCellValueFactory(new PropertyValueFactory("from"));
-        subjectCol.setCellValueFactory(new PropertyValueFactory("subject"));
-        receivedDateCol.setCellValueFactory(new PropertyValueFactory("receivedDate"));
-        sizeCol.setCellValueFactory(new PropertyValueFactory("size"));
-
-        mailItemTableView.setItems(data);
-
         WebEngine engine = mailContentWebView.getEngine();
         String url = "http://java2s.com/";
         engine.load(url);
@@ -215,25 +239,96 @@ public class PrototypeController extends AbstractController implements Initializ
         categoryItemListView.getSelectionModel().select("Inbox");
     }
 
+    public void initMailBoxTable(String boxName) {
+
+        TableColumn categoryCol = (TableColumn) mailItemTableView.getColumns().get(0);
+        TableColumn fromCol = (TableColumn) mailItemTableView.getColumns().get(1);
+        TableColumn subjectCol = (TableColumn) mailItemTableView.getColumns().get(2);
+        TableColumn receivedDateCol = (TableColumn) mailItemTableView.getColumns().get(3);
+        TableColumn sizeCol = (TableColumn) mailItemTableView.getColumns().get(4);
+
+        switch (boxName) {
+            case "RSS Feeds":
+                break;
+            case "Drafts":
+            case "Sent Items":
+            case "Outbox":
+                fromCol.setText("To");
+                receivedDateCol.setText("Sent");
+                fromCol.setCellValueFactory(new PropertyValueFactory("to"));
+                receivedDateCol.setCellValueFactory(new PropertyValueFactory("sentDate"));
+                break;
+            case "Junk E-mail":
+            case "Inbox":
+            case "Deleted Items":
+                fromCol.setText("From");
+                receivedDateCol.setText("Received");
+                fromCol.setCellValueFactory(new PropertyValueFactory("from"));
+                receivedDateCol.setCellValueFactory(new PropertyValueFactory("receivedDate"));
+                break;
+            case "Search Folders":
+                break;
+        }
+
+        categoryCol.setCellValueFactory(new PropertyValueFactory("category"));
+
+        categoryCol.setCellFactory(new Callback<TableColumn<MailItem, String>, TableCell<MailItem, String>>() {
+            @Override
+            public TableCell<MailItem, String> call(TableColumn<MailItem, String> param) {
+                TableCell cell = new TableCell() {
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        if(item!=null){
+                            HBox box= new HBox();
+                            box.setSpacing(10) ;
+                            VBox vbox = new VBox();
+                            vbox.getChildren().add(new Label(item.toString()));
+
+                            ImageView imageview = (ImageView) ViewFactory.defaultFactory.resolveMailCategoryIcon(item.toString());
+                            imageview.setFitHeight(16);
+                            imageview.setFitWidth(16);
+
+                            box.getChildren().addAll(imageview,vbox);
+                            setGraphic(box);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+
+        subjectCol.setCellValueFactory(new PropertyValueFactory("subject"));
+        sizeCol.setCellValueFactory(new PropertyValueFactory("size"));
+
+        mailItemTableView.setItems(data);
+    }
+
     public static class MailItem {
         private StringProperty category;
         private StringProperty from;
+        private StringProperty to;
         private StringProperty subject;
         private StringProperty receivedDate;
+        private StringProperty sentDate;
         private StringProperty size;
 
         private MailItem(String category, String from, String subject, String receivedDate, String size) {
             this.category = new SimpleStringProperty(category);
             this.from = new SimpleStringProperty(from);
+            this.to = new SimpleStringProperty(from);
             this.subject = new SimpleStringProperty(subject);
             this.receivedDate = new SimpleStringProperty(receivedDate);
+            this.sentDate = new SimpleStringProperty(receivedDate);
             this.size = new SimpleStringProperty(size);
         }
 
         public StringProperty categoryProperty() { return category; }
         public StringProperty fromProperty() { return from; }
+        public StringProperty toProperty() { return to; }
         public StringProperty subjectProperty() { return subject; }
         public StringProperty receivedDateProperty() { return receivedDate; }
+        public StringProperty sentDateProperty() { return sentDate; }
         public StringProperty sizeProperty() { return size; }
     }
 
@@ -263,7 +358,7 @@ public class PrototypeController extends AbstractController implements Initializ
             } else {
                 setText(item);
                 if (isSelectedCategoryMail()) {
-                    setGraphic(ViewFactory.defaultFactory.resolveMailBoxIcon(item));
+                    setGraphic(ViewFactory.defaultFactory.resolveMailBoxListItemIcon(item));
                 } else {
                     setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/user.png"));
                 }
@@ -272,15 +367,37 @@ public class PrototypeController extends AbstractController implements Initializ
     }
 
     @FXML
-    void handleClickedOnAdressBookItem() {
+    void handleClickedOnAdressBookCatButton() {
         categoryListView.getSelectionModel().select(1);
         handleCategoryClick();
+        addressBookCatButton.setSelected(true);
+        mailCatButton.setSelected(false);
     }
 
     @FXML
-    void handleClickedOnMailItem() {
+    void handleClickedOnMailCatButton() {
         categoryListView.getSelectionModel().select(0);
         handleCategoryClick();
+        addressBookCatButton.setSelected(false);
+        mailCatButton.setSelected(true);
+    }
+
+    @FXML
+    public void handleClickedOnCategoryItem() {
+        System.out.println("OnClicked: handleClickedOnCategoryItem");
+        String catTitle = "";
+        if (isSelectedCategoryMail()) {
+            catTitle = categoryItemListView.getSelectionModel().getSelectedItem().toString();
+            currentSelectedMailBoxItem = catTitle;
+            categoryNameLabel1.setGraphic(ViewFactory.defaultFactory.resolveMailBoxListItemIcon(catTitle));
+
+            initMailBoxTable(currentSelectedMailBoxItem);
+
+        } else {
+            catTitle = "Address Book";
+            categoryNameLabel1.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/contacts.png"));
+        }
+        categoryNameLabel1.setText(catTitle);
     }
 
     @FXML
@@ -292,10 +409,16 @@ public class PrototypeController extends AbstractController implements Initializ
         categoryNameLabel.setText(catTitle);
 
         categoryItemListView.getItems().clear();
-        if (isSelectedCategoryMail())
+        if (isSelectedCategoryMail()) {
             categoryItemListView.getItems().addAll(mAryMailItems);
-        else
+            if (currentSelectedMailBoxItem.isEmpty())
+                categoryItemListView.getSelectionModel().select("Inbox");
+            else
+                categoryItemListView.getSelectionModel().select(currentSelectedMailBoxItem);
+        } else {
             categoryItemListView.getItems().addAll(mAryAddressBookItems);
+        }
+        handleClickedOnCategoryItem();
     }
 
     public boolean isSelectedCategoryMail() {
@@ -308,10 +431,8 @@ public class PrototypeController extends AbstractController implements Initializ
         mailCatButton.setText("");
 
         img = (ImageView) ViewFactory.defaultFactory.resolveCategoryIcon("AddressBook");
-        adressBookCatButton.setGraphic(img);
-        adressBookCatButton.setText("");
-
-        System.out.println("adb bound = " + leftPanCollapseButton.getBoundsInLocal());
+        addressBookCatButton.setGraphic(img);
+        addressBookCatButton.setText("");
     }
 
     /**
@@ -319,6 +440,12 @@ public class PrototypeController extends AbstractController implements Initializ
      * Initialization for the toolbar button icons and titles
      */
     void initToolbarButtons() {
+
+        leftPanCollapseButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/arrows_left.png"));
+        leftPanCollapseButton.setText("");
+
+        leftPanExpandButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/arrows_right.png"));
+        leftPanExpandButton.setText("");
 
         newMailMenuButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/mail_new.png"));
 
@@ -348,7 +475,7 @@ public class PrototypeController extends AbstractController implements Initializ
         oneNoteButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/one_note.png"));
         oneNoteButton.setText("");
 
-        addressBookButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/address_book.png"));
+        addressBookButton.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/contacts.png"));
         addressBookButton.setText("");
 
         addressBookComboBox.setEditable(true);
@@ -365,7 +492,7 @@ public class PrototypeController extends AbstractController implements Initializ
     }
 
     @FXML
-    public void handleClickedOnCollapseButton() {
+    public void handleClickedOnLeftPanCollapseButton() {
         System.out.println("OnClicked : Collapse index = " + mainSplitePane.getItems());
 
         Node child = mainSplitePane.lookup("#leftAnchorPane");

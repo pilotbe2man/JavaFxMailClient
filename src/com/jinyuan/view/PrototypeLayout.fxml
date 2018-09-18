@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="614.0" prefWidth="1314.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="614.0" prefWidth="1180.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -68,7 +68,7 @@
                   </MenuBar>
                   <ToolBar>
                      <items>
-                        <MenuButton fx:id="newMailMenuButton" mnemonicParsing="false" styleClass="toolBarbutton" text="New(N)">
+                        <MenuButton fx:id="newMailMenuButton" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.newMail">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -78,42 +78,42 @@
                            </tooltip>
                         </MenuButton>
                         <Separator orientation="VERTICAL" />
-                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Print">
+                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.print">
                            <tooltip>
                               <Tooltip text="Print(Microsoft print to PDF) (Ctrl+P)" />
                            </tooltip></Button>
-                        <Button fx:id="moveToFolderButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="MoveToFolder">
+                        <Button fx:id="moveToFolderButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.moveToFolder">
                            <tooltip>
                               <Tooltip text="Move To Folder" />
                            </tooltip></Button>
-                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Delete">
+                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.delete">
                            <tooltip>
                               <Tooltip text="Delete(Crtl+D)" />
                            </tooltip></Button>
                         <Separator layoutX="87.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply(R)">
+                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.reply">
                            <tooltip>
                               <Tooltip text="Reply(Ctrl+R)" />
                            </tooltip></Button>
-                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply To All(L)">
+                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.replyToAll">
                            <tooltip>
                               <Tooltip text="Reply to All(Ctrl+Shift+R)" />
                            </tooltip></Button>
-                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward(W)">
+                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.forward">
                            <tooltip>
                               <Tooltip text="Forward(Ctrl+F)" />
                            </tooltip></Button>
                         <Separator layoutX="252.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="categoriseButton" layoutX="402.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Categorize">
+                        <Button fx:id="categoriseButton" layoutX="402.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.categorize">
                            <tooltip>
                               <Tooltip text="Categorize" />
                            </tooltip></Button>
-                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Follow Up">
+                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.followUp">
                            <tooltip>
                               <Tooltip text="Follow Up" />
                            </tooltip></Button>
                         <Separator layoutX="484.0" layoutY="10.0" orientation="VERTICAL" />
-                        <MenuButton fx:id="sendReceiveButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Send/Receive(C)">
+                        <MenuButton fx:id="sendReceiveButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.sendReceive">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Action 1" />
                               <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -122,23 +122,23 @@
                               <Tooltip text="Send/Receive" />
                            </tooltip>
                         </MenuButton>
-                        <Button fx:id="oneNoteButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="OneNote">
+                        <Button fx:id="oneNoteButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.oneNote">
                            <tooltip>
                               <Tooltip text="Send selected e-mail to OneNote(Unfiled Notes)" />
                            </tooltip>
                         </Button>
                         <Separator layoutX="686.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="addressBookButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Address Book">
+                        <Button fx:id="addressBookButton" layoutX="613.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.addressBook">
                            <tooltip>
                               <Tooltip text="Address Book (Ctrl+Shift+B)" />
                            </tooltip>
                         </Button>
-                        <ComboBox fx:id="addressBookComboBox" prefWidth="150.0" styleClass="toolBarbutton">
+                        <ComboBox fx:id="addressBookComboBox" prefWidth="150.0" styleClass="searchComboxBox">
                            <tooltip>
                               <Tooltip text="Find a Contact" />
                            </tooltip>
                         </ComboBox>
-                        <Button fx:id="helpButton" layoutX="898.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Help">
+                        <Button fx:id="helpButton" layoutX="898.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.help">
                            <tooltip>
                               <Tooltip text="Help(F1)" />
                            </tooltip>
@@ -156,30 +156,36 @@
             </Label>
          </bottom>
          <center>
-            <SplitPane fx:id="mainSplitePane" dividerPositions="0.14176829268292682, 0.9717987804878049" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane fx:id="mainSplitePane" dividerPositions="0.14189189189189189, 0.9349662162162162" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                   <AnchorPane fx:id="leftAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="745.0" prefWidth="248.0">
                      <children>
                         <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox alignment="CENTER" styleClass="appBgWhiteColor" VBox.vgrow="ALWAYS">
+                              <HBox alignment="CENTER" styleClass="appBgGreyColor" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label fx:id="categoryNameLabel" text="Mail" HBox.hgrow="ALWAYS">
                                        <HBox.margin>
-                                          <Insets left="10.0" />
+                                          <Insets />
                                        </HBox.margin>
                                     </Label>
-                                    <AnchorPane layoutX="66.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="appBgWhiteColor" HBox.hgrow="ALWAYS">
+                                    <AnchorPane layoutX="66.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="appBgGreyColor" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="leftPanCollapseButton" mnemonicParsing="false" onAction="#handleClickedOnCollapseButton" styleClass="collapseButton" text="&lt;&lt;" />
+                                          <Button fx:id="leftPanCollapseButton" mnemonicParsing="false" onAction="#handleClickedOnLeftPanCollapseButton" styleClass="toolBarbutton" text="&lt;&lt;" />
                                        </children>
                                        <HBox.margin>
                                           <Insets />
                                        </HBox.margin>
                                     </AnchorPane>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="2.0" left="5.0" top="2.0" />
+                                 </padding>
                               </HBox>
-                              <ListView fx:id="categoryItemListView" prefHeight="553.0" prefWidth="155.0" />
+                              <ListView fx:id="categoryItemListView" onMouseClicked="#handleClickedOnCategoryItem" prefHeight="553.0" prefWidth="155.0" />
                               <ListView fx:id="categoryListView" onMouseClicked="#handleCategoryClick" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
@@ -193,13 +199,19 @@
                                  <children>
                                     <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <VBox>
+                                          <VBox styleClass="appBgGreyColor">
                                              <children>
-                                                <Button fx:id="leftPanExpandButton" mnemonicParsing="false" onAction="#handleClickedOnCollapseButton" styleClass="collapseButton" text="&gt;&gt;" />
+                                                <Button fx:id="leftPanExpandButton" mnemonicParsing="false" onAction="#handleClickedOnLeftPanCollapseButton" styleClass="toolBarbutton" text="&gt;&gt;">
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin></Button>
                                                 <Pane VBox.vgrow="ALWAYS" />
-                                                <Button fx:id="mailCatButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClickedOnMailItem" styleClass="collapseButton" text="Mail" />
-                                                <Button fx:id="adressBookCatButton" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleClickedOnAdressBookItem" styleClass="collapseButton" text="ADB" />
+                                                <ToggleButton fx:id="mailCatButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClickedOnMailCatButton" styleClass="toolBarbutton" text="Mail" />
+                                                <ToggleButton fx:id="addressBookCatButton" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleClickedOnAdressBookCatButton" styleClass="toolBarbutton" text="ADB" />
                                              </children>
+                                             <padding>
+                                                <Insets bottom="2.0" top="2.0" />
+                                             </padding>
                                           </VBox>
                                           <Separator orientation="VERTICAL" HBox.hgrow="ALWAYS" />
                                        </children>
@@ -208,15 +220,81 @@
                               </AnchorPane>
                               <AnchorPane HBox.hgrow="ALWAYS">
                                  <children>
-                                    <TableView fx:id="mailItemTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                      <columns>
-                                        <TableColumn prefWidth="139.0" text="Category" />
-                                        <TableColumn minWidth="0.0" prefWidth="206.0" text="From" />
-                                          <TableColumn minWidth="0.0" prefWidth="429.0" text="Subject" />
-                                          <TableColumn minWidth="0.0" prefWidth="150.0" text="Received" />
-                                          <TableColumn minWidth="0.0" prefWidth="96.0" text="Size" />
-                                      </columns>
-                                    </TableView>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox fx:id="searchVBox">
+                                             <children>
+                                                <HBox alignment="CENTER_LEFT" styleClass="appBgGreyColor">
+                                                   <children>
+                                                      <Label fx:id="categoryNameLabel1" text="Inbox" />
+                                                      <Pane HBox.hgrow="ALWAYS" />
+                                                      <ComboBox fx:id="searchComboBox" prefWidth="150.0" styleClass="searchComboxBox" />
+                                                      <Button fx:id="exSearchButton" mnemonicParsing="false" styleClass="toolBarbutton" text="ArrowUp">
+                                                         <HBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </HBox.margin></Button>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="5.0" top="2.0" />
+                                                   </padding>
+                                                </HBox>
+                                                <FlowPane fx:id="exSearchFlowPane" hgap="10.0" vgap="5.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <MenuButton mnemonicParsing="false" prefWidth="100.0" text="From">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                        </items>
+                                                      </MenuButton>
+                                                      <TextField prefWidth="100.0" />
+                                                      <MenuButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="Body">
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                         </items>
+                                                      </MenuButton>
+                                                      <TextField layoutX="109.0" layoutY="10.0" prefWidth="100.0" />
+                                                      <MenuButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="From">
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                         </items>
+                                                      </MenuButton>
+                                                      <TextField layoutX="70.0" layoutY="10.0" prefWidth="100.0" />
+                                                      <MenuButton layoutX="219.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="Body">
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                         </items>
+                                                      </MenuButton>
+                                                      <TextField layoutX="278.0" layoutY="10.0" prefWidth="100.0" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </FlowPane>
+                                                <MenuButton fx:id="addCriteriaButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Add Criteria">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                  </items>
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </MenuButton>
+                                             </children>
+                                          </VBox>
+                                          <TableView fx:id="mailItemTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                              <TableColumn prefWidth="139.0" text="Category" />
+                                              <TableColumn minWidth="0.0" prefWidth="206.0" text="From" />
+                                                <TableColumn minWidth="0.0" prefWidth="486.0" text="Subject" />
+                                                <TableColumn minWidth="0.0" prefWidth="126.0" text="Received" />
+                                                <TableColumn minWidth="0.0" prefWidth="63.0" text="Size" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                            </children>

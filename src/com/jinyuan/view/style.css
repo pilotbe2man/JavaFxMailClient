@@ -14,6 +14,25 @@ AnchorPane{
   -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #ffffff, #ffffff);
 }
 
+.appBgGreyColor {
+  -fx-background-color: #dddddd;
+}
+
+.searchComboxBox {
+  -fx-border-color: #b8b8b8;
+  -fx-border-width: 1;
+}
+
+.searchComboxBox:hover {
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.searchComboxBox:pressed {
+  -fx-background-color: #ffa81f;
+}
+
 .toolBarbutton{
   -fx-border-color: transparent;
   -fx-border-width: 1;
@@ -30,12 +49,16 @@ AnchorPane{
   -fx-border-radius: 0, 0;
 }
 
-.menu-button .label {
-  -fx-text-fill: black;
-}
-
 .toolBarbutton:pressed {
   -fx-background-color: #ffa81f;
+}
+
+.toolBarbutton:selected {
+  -fx-background-color: #31a5ff;
+}
+
+.menu-button .label {
+  -fx-text-fill: black;
 }
 
 .menu {
@@ -78,26 +101,6 @@ AnchorPane{
   -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
   -fx-font-size: 1em; /* 12 */
   -fx-text-fill: black;
-}
-
-.collapseButton{
-  -fx-border-width: 1;
-  -fx-border-color: transparent;
-  -fx-background-radius: 0;
-  -fx-background-color: transparent;
-  -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
-  -fx-font-size: 1em; /* 12 */
-  -fx-text-fill: black;
-}
-
-.collapseButton:hover {
-  -fx-border-color: #ffa81f;
-  -fx-background-color: #ffea6f;
-  -fx-border-radius: 0, 0;
-}
-
-.collapseButton:pressed {
-  -fx-background-color: #ffa81f;
 }
 
 .tooltip {
