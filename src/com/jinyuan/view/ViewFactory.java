@@ -120,7 +120,7 @@ public class ViewFactory {
 		return returnIcon;
 	}
 
-	public Node resoveIconWithName(String name) {
+	public Node resolveIconWithName(String name) {
 		try {
 			return new ImageView(new Image(getClass().getResourceAsStream(name)));
 		} catch (Exception e) {
@@ -129,7 +129,7 @@ public class ViewFactory {
 		}
 	}
 
-	public Node resoveCategoryIcon(String name) {
+	public Node resolveCategoryIcon(String name) {
 		try {
 			String iconName = name;
 			switch (name) {
@@ -147,7 +147,7 @@ public class ViewFactory {
 		}
 	}
 
-	public Node resoveMailBoxIcon(String name) {
+	public Node resolveMailBoxIcon(String name) {
 		try {
 			String iconName = name;
 			switch (name) {
