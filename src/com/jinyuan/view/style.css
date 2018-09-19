@@ -33,6 +33,14 @@ AnchorPane{
   -fx-background-color: #ffa81f;
 }
 
+.split-menu-button .label {
+  -fx-background-color: transparent;
+}
+
+.split-menu-button .arrow-button {
+  -fx-background-color: transparent;
+}
+
 .toolBarbutton{
   -fx-border-color: transparent;
   -fx-border-width: 1;

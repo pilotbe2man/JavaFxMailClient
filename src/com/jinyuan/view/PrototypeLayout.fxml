@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="614.0" prefWidth="1180.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxWidth="1.7976931348623157E308" prefHeight="846.0" prefWidth="1826.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -68,7 +69,7 @@
                   </MenuBar>
                   <ToolBar>
                      <items>
-                        <MenuButton fx:id="newMailMenuButton" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.newMail">
+                        <SplitMenuButton fx:id="newMailMenuButton" mnemonicParsing="false" onAction="#handeClickedOnNewMailMenuButton" styleClass="toolBarbutton" text="%tb.newMail">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -76,7 +77,7 @@
                            <tooltip>
                               <Tooltip text="New Mail Message" />
                            </tooltip>
-                        </MenuButton>
+                        </SplitMenuButton>
                         <Separator orientation="VERTICAL" />
                         <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.print">
                            <tooltip>
@@ -156,7 +157,7 @@
             </Label>
          </bottom>
          <center>
-            <SplitPane fx:id="mainSplitePane" dividerPositions="0.14189189189189189, 0.9349662162162162" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <SplitPane fx:id="mainSplitePane" dividerPositions="0.14199561403508773, 0.6535087719298246" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                   <AnchorPane fx:id="leftAnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="745.0" prefWidth="248.0">
                      <children>
@@ -186,7 +187,7 @@
                                  </padding>
                               </HBox>
                               <ListView fx:id="categoryItemListView" onMouseClicked="#handleClickedOnCategoryItem" prefHeight="553.0" prefWidth="155.0" />
-                              <ListView fx:id="categoryListView" onMouseClicked="#handleCategoryClick" VBox.vgrow="ALWAYS" />
+                              <ListView fx:id="categoryListView" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                      </children>
@@ -284,17 +285,17 @@
                                                 </MenuButton>
                                              </children>
                                           </VBox>
-                                          <TableView fx:id="mailItemTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                          <TableView fx:id="mailItemTableView" onMouseClicked="#handleClickedOnTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                             <columns>
                                               <TableColumn prefWidth="139.0" text="Category" />
                                               <TableColumn minWidth="0.0" prefWidth="206.0" text="From" />
-                                                <TableColumn minWidth="0.0" prefWidth="305.0" text="Subject" />
-                                                <TableColumn minWidth="0.0" prefWidth="113.0" text="Received" />
-                                                <TableColumn minWidth="0.0" prefWidth="52.0" text="Size" />
-                                                <TableColumn prefWidth="139.0" text="Home Phone" visible="false" />
-                                                <TableColumn prefWidth="139.0" text="Mobile Phone" visible="false" />
-                                                <TableColumn prefWidth="139.0" text="Journal" visible="false" />
-                                                <TableColumn prefWidth="139.0" text="Categories" visible="false" />
+                                                <TableColumn minWidth="0.0" prefWidth="284.0" text="Subject" />
+                                                <TableColumn minWidth="0.0" prefWidth="184.0" text="Received" />
+                                                <TableColumn minWidth="0.0" prefWidth="49.0" text="Size" />
+                                                <TableColumn prefWidth="92.0" text="Home Phone" />
+                                                <TableColumn prefWidth="139.0" text="Mobile Phone" />
+                                                <TableColumn prefWidth="139.0" text="Journal" />
+                                                <TableColumn prefWidth="139.0" text="Categories" />
                                             </columns>
                                           </TableView>
                                        </children>
@@ -306,7 +307,47 @@
                      </children></AnchorPane>
                 <AnchorPane fx:id="rightAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="appBgWhiteColor">
                      <children>
-                        <WebView fx:id="mailContentWebView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Button fx:id="replyInContentButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply" />
+                                    <Button fx:id="replyAllInContentButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply All">
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="forwardInContentButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward" />
+                                    <Pane HBox.hgrow="ALWAYS" />
+                                    <Label fx:id="receivedDateLabel" text="12:34 PM" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="fromLabel" text="From:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="subjectLabel" layoutX="10.0" layoutY="110.0" text="Subject:">
+                                 <font>
+                                    <Font name="System Bold" size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <WebView fx:id="mailContentWebView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </WebView>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
                      </children></AnchorPane>
               </items>
             </SplitPane>

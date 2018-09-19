@@ -31,6 +31,8 @@ public class ViewFactory {
 	private final String ADD_USER_EMAIL_FXML = "AddUserLayout.fxml";
 	private final String MAIL_TYPE_SELECTION_FXML = "MailTypeSelectionLayout.fxml";
 	private final String PROTOTYPE_FXML = "PrototypeLayout.fxml";
+	private final String DRAFT_MAIL_FXML = "DraftMailLayout.fxml";
+	private final String CHOOSE_USER_FXML = "ChooseUserLayout.fxml";
 
 	private ModelAccess modelAccess = new ModelAccess();
 	private PersistenceAcess persistenceAcess = new PersistenceAcess(modelAccess);
@@ -47,9 +49,19 @@ public class ViewFactory {
 
 	}
 
+	public Scene getChooseUserScene() {
+		AbstractController chooseUserController = new ChooseUserController(modelAccess);
+		return initializeScene(CHOOSE_USER_FXML, chooseUserController);
+	}
+
+	public Scene getDraftMailScene() {
+		AbstractController draftMailController = new DraftMailController(modelAccess);
+		return initializeScene(DRAFT_MAIL_FXML, draftMailController);
+	}
+
 	public Scene getPrototypeScene() {
-		AbstractController emailDetailsController = new PrototypeController(modelAccess);
-		return initializeScene(PROTOTYPE_FXML, emailDetailsController);
+		AbstractController prototypeController = new PrototypeController(modelAccess);
+		return initializeScene(PROTOTYPE_FXML, prototypeController);
 	}
 
 	public Scene getEmailDetailsScene() {
@@ -288,7 +300,7 @@ public class ViewFactory {
 	private Scene initializeScene(String fxmlPath, AbstractController controller) {
 		FXMLLoader loader;
 		Parent parent;
-		Scene scene;
+		Scene scene = null;
 		try {
 			ResourceBundle bundle = ResourceBundle.getBundle("com/jinyuan/resources/lang", Locale.getDefault());
 			loader = new FXMLLoader(getClass().getResource(fxmlPath), bundle);
@@ -300,6 +312,7 @@ public class ViewFactory {
 		}
 
 		scene = new Scene(parent);
+		scene.setUserData(loader);
 		scene.getStylesheets().add(getClass().getResource(DEFAULT_CSS).toExternalForm());
 		return scene;
 	}
