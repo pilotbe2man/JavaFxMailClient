@@ -288,9 +288,13 @@
                                             <columns>
                                               <TableColumn prefWidth="139.0" text="Category" />
                                               <TableColumn minWidth="0.0" prefWidth="206.0" text="From" />
-                                                <TableColumn minWidth="0.0" prefWidth="486.0" text="Subject" />
-                                                <TableColumn minWidth="0.0" prefWidth="126.0" text="Received" />
-                                                <TableColumn minWidth="0.0" prefWidth="63.0" text="Size" />
+                                                <TableColumn minWidth="0.0" prefWidth="305.0" text="Subject" />
+                                                <TableColumn minWidth="0.0" prefWidth="113.0" text="Received" />
+                                                <TableColumn minWidth="0.0" prefWidth="52.0" text="Size" />
+                                                <TableColumn prefWidth="139.0" text="Home Phone" visible="false" />
+                                                <TableColumn prefWidth="139.0" text="Mobile Phone" visible="false" />
+                                                <TableColumn prefWidth="139.0" text="Journal" visible="false" />
+                                                <TableColumn prefWidth="139.0" text="Categories" visible="false" />
                                             </columns>
                                           </TableView>
                                        </children>

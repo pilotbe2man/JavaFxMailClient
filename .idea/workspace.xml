@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5aa506b-fef1-4e96-a5a1-509fb1527370" name="Default Changelist" comment="added the properties of resource bundle for multi lang.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,12 +17,13 @@
     <session id="-556556640">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -50,7 +53,7 @@
           <entry key="classpath" value="6" />
           <entry key="css" value="611" />
           <entry key="fxml" value="28" />
-          <entry key="java" value="5142" />
+          <entry key="java" value="5998" />
           <entry key="properties" value="126" />
           <entry key="txt" value="320" />
         </counts>
@@ -59,7 +62,7 @@
         <counts>
           <entry key="CSS" value="611" />
           <entry key="Eclipse" value="6" />
-          <entry key="JAVA" value="5142" />
+          <entry key="JAVA" value="5998" />
           <entry key="PLAIN_TEXT" value="320" />
           <entry key="Properties" value="126" />
           <entry key="XML" value="28" />
@@ -72,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="289">
               <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -85,18 +88,18 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1290">
-              <caret line="205" column="64" lean-forward="true" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
+            <state relative-caret-position="3485">
+              <caret line="205" column="64" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
+            <state relative-caret-position="935">
               <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
             </state>
           </provider>
@@ -105,7 +108,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
+            <state relative-caret-position="2516">
               <caret line="186" column="11" selection-start-line="179" selection-start-column="8" selection-end-line="186" selection-end-column="11" />
             </state>
           </provider>
@@ -114,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/ViewFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="173" column="26" lean-forward="true" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
+            <state relative-caret-position="2669">
+              <caret line="173" column="26" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -123,35 +126,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
+            <state relative-caret-position="342">
+              <caret line="570" column="63" lean-forward="true" selection-start-line="570" selection-start-column="63" selection-end-line="570" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1699#1700#0" expanded="true" />
-                <element signature="e#1733#1734#0" expanded="true" />
-                <element signature="e#7980#8839#0" expanded="true" />
-                <element signature="e#8838#8839#0" expanded="true" />
+                <element signature="e#7980#8799#0" expanded="true" />
+                <element signature="e#8798#8799#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jinyuan/resources/lang_en_US.properties">
-          <provider editor-type-id="ResourceBundle" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jinyuan/resources/lang_zh_CN.properties">
-          <provider editor-type-id="ResourceBundle" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -261,22 +242,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="EmailDev" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EmailDev" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="EmailDev" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EmailDev" type="616d4139:PackageViewModuleNode" />
-              <item name="com.jinyuan" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -301,12 +266,28 @@
       </pane>
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EmailDev" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EmailDev" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="EmailDev" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EmailDev" type="616d4139:PackageViewModuleNode" />
+              <item name="com.jinyuan" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537293454513" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537321619076" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -366,7 +347,8 @@
       <workItem from="1537102698464" duration="6387000" />
       <workItem from="1537122431262" duration="5503000" />
       <workItem from="1537146962531" duration="10022000" />
-      <workItem from="1537164884924" duration="55015000" />
+      <workItem from="1537164884924" duration="55596000" />
+      <workItem from="1537300233822" duration="8302000" />
     </task>
     <task id="LOCAL-00001" summary="made the prototype as the mock up document.">
       <created>1537152987361</created>
@@ -435,13 +417,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76927000" />
+    <option name="totallyTimeSpent" value="85810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19829424" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20042644" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -449,8 +431,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21451788" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21451788" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2340195" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -491,9 +473,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="18" column="92" selection-start-line="18" selection-start-column="79" selection-end-line="18" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -533,32 +512,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/MainLayout.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#253#254#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_151/javafx-src.zip!/javafx/collections/ObservableList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="186" column="11" selection-start-line="179" selection-start-column="8" selection-end-line="186" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -578,32 +538,14 @@
     <entry file="file://$PROJECT_DIR$/.project">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/SplitePaneEx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/SplitPaneEx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/SplitePaneEx.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/SplitPaneEx.java" />
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_151/javafx-src.zip!/javafx/scene/Parent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="724" column="26" selection-start-line="724" selection-start-column="26" selection-end-line="724" selection-end-column="26" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/images/contacts.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/images/user.png">
       <provider selected="true" editor-type-id="images" />
@@ -621,20 +563,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang_en_US.properties">
-      <provider editor-type-id="ResourceBundle" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lang_zh_CN.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lang_en_US.properties" />
+    <entry file="file://$PROJECT_DIR$/lang_zh_CN.properties" />
+    <entry file="file://$PROJECT_DIR$/test.xml" />
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/resources/lang_en_US.properties">
       <provider editor-type-id="ResourceBundle" />
       <provider selected="true" editor-type-id="text-editor">
@@ -651,22 +582,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/images/mail_cat_normal.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/ViewFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="173" column="26" lean-forward="true" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_151/javafx-src.zip!/javafx/scene/control/SplitPane.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -690,24 +607,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1290">
-          <caret line="205" column="64" lean-forward="true" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
+        <state relative-caret-position="289">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#253#254#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3485">
+          <caret line="205" column="64" selection-start-line="205" selection-start-column="64" selection-end-line="205" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2516">
+          <caret line="186" column="11" selection-start-line="179" selection-start-column="8" selection-end-line="186" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jinyuan/view/ViewFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2669">
+          <caret line="173" column="26" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="400" selection-end-column="12" />
+        <state relative-caret-position="342">
+          <caret line="570" column="63" lean-forward="true" selection-start-line="570" selection-start-column="63" selection-end-line="570" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1699#1700#0" expanded="true" />
-            <element signature="e#1733#1734#0" expanded="true" />
-            <element signature="e#7980#8839#0" expanded="true" />
-            <element signature="e#8838#8839#0" expanded="true" />
+            <element signature="e#7980#8799#0" expanded="true" />
+            <element signature="e#8798#8799#0" expanded="true" />
           </folding>
         </state>
       </provider>

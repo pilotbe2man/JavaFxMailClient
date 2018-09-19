@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -146,6 +145,7 @@ public class PrototypeController extends AbstractController implements Initializ
 
     //divider postions of the mailSplitPane;
     double[] mDivPosOfMainSplitPane;
+    double[] mDivPosOfInit;
     List<String> mAryCategory = new ArrayList<>();
     List<String> mAryMailItems = new ArrayList<>();
     List<String> mAryAddressBookItems = new ArrayList<>();
@@ -187,6 +187,8 @@ public class PrototypeController extends AbstractController implements Initializ
                 return new CategoryListItemCell();
             }
         });
+
+        mDivPosOfInit = mainSplitePane.getDividerPositions();
     }
 
     void initSearchCategory() {
@@ -200,12 +202,65 @@ public class PrototypeController extends AbstractController implements Initializ
         exSearchButton.setText("");
     }
 
-    final ObservableList<MailItem> data = FXCollections.observableArrayList(
+    final ObservableList<MailItem> mailData = FXCollections.observableArrayList(
             new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 09:30:34", "34KB"),
             new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 10:30:34", "23KB"),
             new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 11:30:34", "20KB"),
             new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 12:30:34", "30KB"),
             new MailItem("SoSo", "michael.brown@example.com", "Indeed job growing", "2018-09-18 12:30:34", "40KB")
+    );
+
+    final ObservableList<AddressBookItem> addressBookData = FXCollections.observableArrayList(
+            new AddressBookItem(
+                    "Jhone Smith",
+                    "361 Degrees",
+                    "Receiving the packages",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "Aluminum Corporation of China Limited",
+                    "Amoi"),
+            new AddressBookItem(
+                    "Zhong Jingyi",
+                    "Anta Sports",
+                    "Receiving the packages",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "Aluminum Corporation of China Limited",
+                    "Amoi"),
+            new AddressBookItem(
+                    "Wen Cai",
+                    "Baidu",
+                    "Receiving the packages",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "Aluminum Corporation of China Limited",
+                    "Amoi"),
+            new AddressBookItem(
+                    "Kong Ru",
+                    "Bank of China",
+                    "Receiving the packages",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "Aluminum Corporation of China Limited",
+                    "Amoi"),
+            new AddressBookItem(
+                    "Liao Heng",
+                    "Bank of Communications",
+                    "Receiving the packages",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "123123123123",
+                    "Aluminum Corporation of China Limited",
+                    "Amoi")
     );
 
     void initTestValues() {
@@ -223,12 +278,11 @@ public class PrototypeController extends AbstractController implements Initializ
         mAryMailItems.add("Deleted Items");
         mAryMailItems.add("Search Folders");
 
-        mAryAddressBookItems.add("Test1@outlook.com");
-        mAryAddressBookItems.add("Test2@outlook.com");
-        mAryAddressBookItems.add("Test3@outlook.com");
-        mAryAddressBookItems.add("Test4@outlook.com");
-        mAryAddressBookItems.add("Test5@outlook.com");
-        mAryAddressBookItems.add("Test6@outlook.com");
+        mAryAddressBookItems.add("Phone List");
+        mAryAddressBookItems.add("By Category");
+        mAryAddressBookItems.add("By Company");
+        mAryAddressBookItems.add("By Location");
+        mAryAddressBookItems.add("Outlook Data Files");
 
         categoryItemListView.getItems().addAll(mAryMailItems);
 
@@ -246,6 +300,21 @@ public class PrototypeController extends AbstractController implements Initializ
         TableColumn subjectCol = (TableColumn) mailItemTableView.getColumns().get(2);
         TableColumn receivedDateCol = (TableColumn) mailItemTableView.getColumns().get(3);
         TableColumn sizeCol = (TableColumn) mailItemTableView.getColumns().get(4);
+
+        categoryCol.setPrefWidth(139);
+        fromCol.setPrefWidth(206);
+        subjectCol.setPrefWidth(350);
+        receivedDateCol.setPrefWidth(126);
+        sizeCol.setPrefWidth(64);
+
+        ((TableColumn) mailItemTableView.getColumns().get(5)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(6)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(7)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(8)).setVisible(false);
+
+        categoryCol.setText("Category");
+        subjectCol.setText("Subject");
+        sizeCol.setText("Size");
 
         switch (boxName) {
             case "RSS Feeds":
@@ -301,7 +370,107 @@ public class PrototypeController extends AbstractController implements Initializ
         subjectCol.setCellValueFactory(new PropertyValueFactory("subject"));
         sizeCol.setCellValueFactory(new PropertyValueFactory("size"));
 
-        mailItemTableView.setItems(data);
+        mailItemTableView.setItems(mailData);
+    }
+
+    public void initAddressBookTable(String type) {
+
+        TableColumn fullNameCol = (TableColumn) mailItemTableView.getColumns().get(0);
+        TableColumn companyCol = (TableColumn) mailItemTableView.getColumns().get(1);
+        TableColumn fileAsCol = (TableColumn) mailItemTableView.getColumns().get(2);
+        TableColumn businessPhoneCol = (TableColumn) mailItemTableView.getColumns().get(3);
+        TableColumn businessFaxCol = (TableColumn) mailItemTableView.getColumns().get(4);
+
+        TableColumn homePhoneCol = (TableColumn) mailItemTableView.getColumns().get(5);
+        TableColumn mobilePhoneCol = (TableColumn) mailItemTableView.getColumns().get(6);
+        TableColumn journalCol = (TableColumn) mailItemTableView.getColumns().get(7);
+        TableColumn categoriesCol = (TableColumn) mailItemTableView.getColumns().get(8);
+
+        fullNameCol.setPrefWidth(140);
+        companyCol.setPrefWidth(140);
+        fileAsCol.setPrefWidth(140);
+        businessPhoneCol.setPrefWidth(140);
+        businessFaxCol.setPrefWidth(140);
+        homePhoneCol.setPrefWidth(140);
+        mobilePhoneCol.setPrefWidth(140);
+        journalCol.setPrefWidth(140);
+        categoriesCol.setPrefWidth(140);
+
+        fullNameCol.setText("Full Name");
+        companyCol.setText("Company");
+        fileAsCol.setText("File As");
+        businessPhoneCol.setText("Business Phone");
+        businessFaxCol.setText("Business Fax");
+
+        homePhoneCol.setVisible(true);
+        mobilePhoneCol.setVisible(true);
+        journalCol.setVisible(true);
+        categoriesCol.setVisible(true);
+
+        switch (type) {
+            case "Business Cards":
+                break;
+            case "Address Cards":
+                break;
+            case "Detailed Address Cards":
+                break;
+            case "Phone List":
+                break;
+            case "By Category":
+                break;
+            case "By Company":
+                break;
+            case "By Location":
+                break;
+            case "Outlook Data Files":
+                break;
+        }
+
+        fullNameCol.setCellValueFactory(new PropertyValueFactory("fullName"));
+        companyCol.setCellValueFactory(new PropertyValueFactory("company"));
+        fileAsCol.setCellValueFactory(new PropertyValueFactory("fileAs"));
+        businessPhoneCol.setCellValueFactory(new PropertyValueFactory("businessPhone"));
+        businessFaxCol.setCellValueFactory(new PropertyValueFactory("businessFax"));
+        homePhoneCol.setCellValueFactory(new PropertyValueFactory("homePhone"));
+        mobilePhoneCol.setCellValueFactory(new PropertyValueFactory("mobilePhone"));
+        journalCol.setCellValueFactory(new PropertyValueFactory("journal"));
+        categoriesCol.setCellValueFactory(new PropertyValueFactory("categories"));
+
+        mailItemTableView.setItems(addressBookData);
+    }
+
+    public static class AddressBookItem {
+        private StringProperty fullName;
+        private StringProperty company;
+        private StringProperty fileAs;
+        private StringProperty businessPhone;
+        private StringProperty businessFax;
+        private StringProperty homePhone;
+        private StringProperty mobilePhone;
+        private StringProperty journal;
+        private StringProperty categories;
+
+        private AddressBookItem(String fullName, String company, String fileAs, String businessPhone, String businessFax, String homePhone, String mobilePhone, String journal, String categories) {
+            this.fullName = new SimpleStringProperty(fullName);
+            this.company = new SimpleStringProperty(company);
+            this.fileAs = new SimpleStringProperty(fileAs);
+            this.businessPhone = new SimpleStringProperty(businessPhone);
+            this.businessFax = new SimpleStringProperty(businessFax);
+            this.homePhone = new SimpleStringProperty(homePhone);
+            this.mobilePhone = new SimpleStringProperty(mobilePhone);
+            this.journal = new SimpleStringProperty(journal);
+            this.categories = new SimpleStringProperty(categories);
+        }
+
+        public StringProperty fullNameProperty() { return fullName; }
+        public StringProperty companyProperty() { return company; }
+        public StringProperty fileAsProperty() { return fileAs; }
+        public StringProperty businessPhoneProperty() { return businessPhone; }
+        public StringProperty businessFaxProperty() { return businessFax; }
+        public StringProperty homePhoneProperty() { return homePhone; }
+        public StringProperty mobilePhoneProperty() { return mobilePhone; }
+        public StringProperty journalProperty() { return journal; }
+        public StringProperty categoriesProperty() { return categories; }
     }
 
     public static class MailItem {
@@ -401,7 +570,8 @@ public class PrototypeController extends AbstractController implements Initializ
             if (!isExist)
                 mainSplitePane.getItems().add(rightAnchorPane);
 
-            mailItemTableView.setVisible(true);
+            if (mDivPosOfInit != null)
+                mainSplitePane.setDividerPositions(mDivPosOfInit);
 
             addressBookCatButton.setSelected(false);
             mailCatButton.setSelected(true);
@@ -409,8 +579,9 @@ public class PrototypeController extends AbstractController implements Initializ
             catTitle = "Address Book";
             categoryNameLabel1.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("/com/jinyuan/view/images/contacts.png"));
 
+            initAddressBookTable("");
+
             mainSplitePane.getItems().remove(rightAnchorPane);
-            mailItemTableView.setVisible(false);
 
             addressBookCatButton.setSelected(true);
             mailCatButton.setSelected(false);
@@ -429,6 +600,7 @@ public class PrototypeController extends AbstractController implements Initializ
         categoryItemListView.getItems().clear();
         if (isSelectedCategoryMail()) {
             categoryItemListView.getItems().addAll(mAryMailItems);
+
             if (currentSelectedMailBoxItem.isEmpty())
                 categoryItemListView.getSelectionModel().select("Inbox");
             else
@@ -516,13 +688,15 @@ public class PrototypeController extends AbstractController implements Initializ
         Node child = mainSplitePane.lookup("#leftAnchorPane");
 
         if (child != null) {
-            mDivPosOfMainSplitPane = mainSplitePane.getDividerPositions();
+            if (isSelectedCategoryMail())
+                mDivPosOfMainSplitPane = mainSplitePane.getDividerPositions();
             mainSplitePane.getItems().remove(leftAnchorPane);
             categoryListHBox.getChildren().add(0, expandAnchorPane);
         } else {
             mainSplitePane.getItems().add(0, leftAnchorPane);
             categoryListHBox.getChildren().remove(expandAnchorPane);
-            mainSplitePane.setDividerPositions(mDivPosOfMainSplitPane);
+            if (isSelectedCategoryMail())
+                mainSplitePane.setDividerPositions(mDivPosOfMainSplitPane);
         }
     }
 }
