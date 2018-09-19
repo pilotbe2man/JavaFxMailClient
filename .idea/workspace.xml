@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5aa506b-fef1-4e96-a5a1-509fb1527370" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/ChooseUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/DraftMailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jinyuan/model/AddressBookItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jinyuan/view/ChooseUserLayout.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jinyuan/view/DraftMailLayout.fxml" afterDir="false" />
+    <list default="true" id="d5aa506b-fef1-4e96-a5a1-509fb1527370" name="Default Changelist" comment="made the mail boxs layout and address book tables.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/controller/AbstractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/AbstractController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/view/PrototypeLayout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/view/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/view/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jinyuan/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jinyuan/view/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -110,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="720" column="48" lean-forward="true" selection-start-line="720" selection-start-column="48" selection-end-line="720" selection-end-column="48" />
+            <state relative-caret-position="268">
+              <caret line="712" column="55" lean-forward="true" selection-start-line="712" selection-start-column="55" selection-end-line="712" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3927#3928#0" expanded="true" />
@@ -384,7 +373,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537383812620" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537384078783" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -449,7 +438,7 @@
       <workItem from="1537122431262" duration="5503000" />
       <workItem from="1537146962531" duration="10022000" />
       <workItem from="1537164884924" duration="55596000" />
-      <workItem from="1537300233822" duration="44771000" />
+      <workItem from="1537300233822" duration="45092000" />
     </task>
     <task id="LOCAL-00001" summary="made the prototype as the mock up document.">
       <created>1537152987361</created>
@@ -521,11 +510,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537321666665</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="made the mail boxs layout and address book tables.">
+      <created>1537383826656</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1537383826656</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122279000" />
+    <option name="totallyTimeSpent" value="122600000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -870,8 +866,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jinyuan/controller/PrototypeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="720" column="48" lean-forward="true" selection-start-line="720" selection-start-column="48" selection-end-line="720" selection-end-column="48" />
+        <state relative-caret-position="268">
+          <caret line="712" column="55" lean-forward="true" selection-start-line="712" selection-start-column="55" selection-end-line="712" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3927#3928#0" expanded="true" />
