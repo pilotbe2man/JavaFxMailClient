@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="appBgWhiteColor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button fx:id="replyInContentButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply" />
+                  <Button fx:id="replyAllInContentButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply All">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="forwardInContentButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="receivedDateLabel" text="12:34 PM" />
+               </children>
+            </HBox>
+            <Label fx:id="fromLabel" text="From:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="subjectLabel" layoutX="10.0" layoutY="110.0" text="Subject:">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Label>
+            <WebView fx:id="mailContentWebView" prefHeight="644.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </WebView>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -49,4 +49,19 @@ public class AddressBookItem {
     public StringProperty mobilePhoneProperty() { return mobilePhone; }
     public StringProperty journalProperty() { return journal; }
     public StringProperty categoriesProperty() { return categories; }
+
+    @Override
+    public String toString() {
+        return "fullName : <" +
+                fullName.getValue() + ">, mail : <" +
+                mail.getValue() + ">, company : " +
+                company.getValue() + ", fileAs : " +
+                fileAs.getValue() + ", businessPhone : " +
+                businessPhone.getValue() + ", businessFax : " +
+                businessFax.getValue() + ", homePhone : " +
+                homePhone.getValue() + ", mobilePhone : " +
+                mobilePhone.getValue() + ", journal : " +
+                journal.getValue() + ", categories : " +
+                categories.getValue();
+    }
 }

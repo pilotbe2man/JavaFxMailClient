@@ -33,6 +33,7 @@ public class ViewFactory {
 	private final String PROTOTYPE_FXML = "PrototypeLayout.fxml";
 	private final String DRAFT_MAIL_FXML = "DraftMailLayout.fxml";
 	private final String CHOOSE_USER_FXML = "ChooseUserLayout.fxml";
+	private final String EMAIL_DETAIL_FXML = "EmailDetailLayout.fxml";
 
 	private ModelAccess modelAccess = new ModelAccess();
 	private PersistenceAcess persistenceAcess = new PersistenceAcess(modelAccess);
@@ -67,6 +68,11 @@ public class ViewFactory {
 	public Scene getEmailDetailsScene() {
 		AbstractController emailDetailsController = new EmailDetailsController(modelAccess);
 		return initializeScene(EMAIL_DETAILS_FXML, emailDetailsController);
+	}
+
+	public Scene getEmailDetailScene(PrototypeController.MailItem aItem) {
+		AbstractController emailDetailController = new EmailDetailController(modelAccess, aItem);
+		return initializeScene(EMAIL_DETAIL_FXML, emailDetailController);
 	}
 
 	public Scene getComposeEmailScene() {

@@ -178,6 +178,9 @@ public class PrototypeController extends AbstractController implements Initializ
     List<String> mAryMailItems = new ArrayList<>();
     List<String> mAryAddressBookItems = new ArrayList<>();
 
+    //show/hide preview flag
+    boolean isShowingMode = true;
+
     public PrototypeController(ModelAccess modelAccess) {
         super(modelAccess);
     }
@@ -242,6 +245,47 @@ public class PrototypeController extends AbstractController implements Initializ
         });
 
         mDivPosOfMailExp = mainSplitePane.getDividerPositions();
+
+        mailItemTableView.setRowFactory( tv -> {
+            TableRow row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Object rowData = row.getItem();
+                    if (rowData instanceof MailItem) {
+                        System.out.println("Double Clicked On MailItem -> {" + rowData.toString() + "}");
+                        showMailDetailScene((MailItem) rowData);
+                    } else {
+                        System.out.println("Double Clicked On AddressBookItem -> {" + rowData.toString() + "}");
+                    }
+                }
+            });
+            return row ;
+        });
+    }
+
+    /**
+     * show the mail detail scene for the clicked item
+     */
+    public void showMailDetailScene(MailItem aItem) {
+        Scene scene = ViewFactory.defaultFactory.getEmailDetailScene(aItem);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("Detailed Email");
+        stage.show();
+    }
+
+    @FXML
+    public void actionOnShowPreviewMenuItem() {
+        System.out.println("OnClicked actionOnShowPreviewMenuItem");
+        mainSplitePane.getItems().add(rightAnchorPane);
+        isShowingMode = true;
+    }
+
+    @FXML
+    public void actionOnHidePreviewMenuItem() {
+        System.out.println("OnClicked actionOnHidePreviewMenuItem");
+        mainSplitePane.getItems().remove(rightAnchorPane);
+        isShowingMode = false;
     }
 
     @FXML
@@ -945,6 +989,17 @@ public class PrototypeController extends AbstractController implements Initializ
         public StringProperty receivedDateProperty() { return receivedDate; }
         public StringProperty sentDateProperty() { return sentDate; }
         public StringProperty sizeProperty() { return size; }
+
+        @Override
+        public String toString() {
+            return "from : <" +
+                    from.getValue() + ">, to : <" +
+                    to.getValue() + ">, subject : " +
+                    subject.getValue() + ", received date : " +
+                    receivedDate.getValue() + ", sent date : " +
+                    sentDate.getValue() + ", category : " +
+                    category.getValue();
+        }
     }
 
     @FXML
@@ -1023,8 +1078,10 @@ public class PrototypeController extends AbstractController implements Initializ
                 }
             }
 
-            if (!isExist)
-                mainSplitePane.getItems().add(rightAnchorPane);
+            if (isShowingMode) {
+                if (!isExist)
+                    mainSplitePane.getItems().add(rightAnchorPane);
+            }
 
             if (isExpandedOfLeftPane()) {
                 mainSplitePane.setDividerPositions(mDivPosOfMailExp);
@@ -1039,7 +1096,8 @@ public class PrototypeController extends AbstractController implements Initializ
 
             initAddressBookTable("");
 
-            mainSplitePane.getItems().remove(rightAnchorPane);
+            if (!isShowingMode)
+                mainSplitePane.getItems().remove(rightAnchorPane);
 
             if (isExpandedOfLeftPane())
                 mDivPosOfAddressBookExp = mainSplitePane.getDividerPositions();

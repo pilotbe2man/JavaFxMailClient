@@ -1,10 +1,14 @@
 package com.jinyuan.controller;
 
 import com.jinyuan.view.ViewFactory;
+import com.pixelduke.control.Ribbon;
+import com.pixelduke.control.ribbon.QuickAccessBar;
+import com.pixelduke.control.ribbon.RibbonTab;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -36,7 +40,10 @@ public class DraftMailController extends AbstractController implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        createRibbon();
+    }
 
+    public void createRibbon() {
     }
 
     public void fetchRecipient(Scene scene) {
