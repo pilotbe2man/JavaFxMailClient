@@ -1,0 +1,122 @@
+AnchorPane{
+  -fx-padding: 0;
+  -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #99bbff,#ccddff);
+  -fx-background-repeat: repeat, no-repeat;
+  -fx-background-position: left top, left 19px top 15px ;
+}
+
+*{
+  -fx-border-radius: 0 0 0 0;
+  -fx-background-radius: 0 0 0 0;
+}
+
+.appBgWhiteColor {
+  -fx-background-color: radial-gradient(center 70% 5%, radius 60%, #ffffff, #ffffff);
+}
+
+.appBgGreyColor {
+  -fx-background-color: #dddddd;
+}
+
+.searchComboxBox {
+  -fx-border-color: #b8b8b8;
+  -fx-border-width: 1;
+}
+
+.searchComboxBox:hover {
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.searchComboxBox:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.split-menu-button .label {
+  -fx-background-color: transparent;
+}
+
+.split-menu-button .arrow-button {
+  -fx-background-color: transparent;
+}
+
+.toolBarbutton{
+  -fx-border-color: transparent;
+  -fx-border-width: 1;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+  -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-font-size: 1em; /* 12 */
+  -fx-text-fill: black;
+}
+
+.toolBarbutton:hover {
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.toolBarbutton:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.toolBarbutton:selected {
+  -fx-background-color: #31a5ff;
+}
+
+.menu-button .label {
+  -fx-text-fill: black;
+}
+
+.menu {
+  -fx-border-width: 1;
+  -fx-border-color: transparent;
+  -fx-background-color: transparent;
+}
+
+.menu:hover {
+  -fx-border-width: 1;
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+}
+
+.menu:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.menu-item {
+  -fx-border-width: 1;
+  -fx-border-color: transparent;
+  -fx-background-color: transparent;
+}
+
+.menu-item:hover {
+  -fx-border-width: 1;
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+}
+
+.menu-item:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.menu .label {
+  -fx-border-color: transparent;
+  -fx-border-width: 0;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+  -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+  -fx-font-size: 1em; /* 12 */
+  -fx-text-fill: black;
+}
+
+.tooltip {
+  -fx-border-width: 1;
+  -fx-background-radius: 5;
+  -fx-border-radius: 5;
+  -fx-border-color: grey;
+  -fx-background-color: #e7e7e7;
+  -fx-text-fill: black;
+  -fx-font-size: 1em; /* 12 */
+}

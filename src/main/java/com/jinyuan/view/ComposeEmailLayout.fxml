@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HTMLEditor fx:id="ComposeArea" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="3.0" layoutY="178.0" prefHeight="543.0" prefWidth="623.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="178.0" />
+      <ChoiceBox fx:id="SenderChoice" layoutX="79.0" layoutY="14.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
+      <Label layoutX="14.0" layoutY="18.0" text="From:" />
+      <Label layoutX="14.0" layoutY="48.0" text="To:" />
+      <TextField fx:id="RecipientField" layoutX="79.0" layoutY="44.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
+      <TextField fx:id="CcField" layoutX="79.0" layoutY="76.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
+      <Label layoutX="16.0" layoutY="80.0" text="Cc:" />
+      <Label layoutX="15.0" layoutY="112.0" text="Subject:" />
+      <TextField fx:id="SubjectField" layoutX="79.0" layoutY="108.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
+      <Button layoutX="10.0" layoutY="148.0" mnemonicParsing="false" onAction="#AttachBtnAction" text="Attach:" />
+      <Label fx:id="errorLabel" layoutX="17.0" layoutY="731.0" text="Error label" AnchorPane.bottomAnchor="14.0" />
+      <Label fx:id="attachNamesLabel" layoutX="79.0" layoutY="152.0" text="Attchments names" />
+      <Button layoutX="523.0" layoutY="727.0" mnemonicParsing="false" onAction="#SendBtnAction" prefHeight="25.0" prefWidth="93.0" text="Send" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0" />
+   </children>
+</AnchorPane>

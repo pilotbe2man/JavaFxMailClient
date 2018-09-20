@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="476.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button layoutX="10.0" layoutY="628.0" onAction="#actionOnToButton" prefHeight="25.0" prefWidth="49.0" text="To-&gt;" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="10.0" />
+        <TextField fx:id="toTextField" layoutX="75.0" layoutY="628.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="9.0" />
+        <TextField fx:id="ccTextField" layoutX="75.0" layoutY="660.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="9.0" />
+        <Button layoutX="10.0" layoutY="660.0" onAction="#actionOnCcButton" prefHeight="25.0" prefWidth="49.0" text="Cc-&gt;" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="10.0" />
+        <Button layoutX="441.0" layoutY="517.0" mnemonicParsing="false" onAction="#actionOnOkButton" prefWidth="60.0" text="Ok" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="75.0" />
+        <Label fx:id="errorLabel" layoutX="17.0" layoutY="731.0" AnchorPane.bottomAnchor="14.0" />
+        <Button layoutX="561.0" layoutY="727.0" mnemonicParsing="false" onAction="#actionOnCancelButton" prefHeight="25.0" prefWidth="60.0" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="9.0" />
+        <Button layoutX="10.0" layoutY="692.0" onAction="#actionOnBccButton" prefHeight="25.0" prefWidth="49.0" text="Bcc-&gt;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" />
+        <TextField fx:id="bccTextField" layoutX="75.0" layoutY="692.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="9.0" />
+      <Label layoutX="10.0" layoutY="7.0" text="Search" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="7.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchNameTextField" layoutX="14.0" layoutY="31.0" prefHeight="25.0" prefWidth="196.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="31.0" />
+      <TableView fx:id="userTableView" layoutX="14.0" layoutY="63.0" prefHeight="343.0" prefWidth="553.0" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="63.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+            <TableColumn prefWidth="75.0" text="Column X" />
+         </columns></TableView>
+      <RadioButton fx:id="nameOnlyRadioButton" layoutX="75.0" layoutY="9.0" mnemonicParsing="false" selected="true" text="Name Only" />
+      <RadioButton fx:id="moreColumnsRadioButton" layoutX="178.0" layoutY="9.0" mnemonicParsing="false" text="More columns" />
+    </children>
+</AnchorPane>
