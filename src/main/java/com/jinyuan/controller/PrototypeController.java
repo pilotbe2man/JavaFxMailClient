@@ -179,7 +179,7 @@ public class PrototypeController extends AbstractController implements Initializ
     List<String> mAryAddressBookItems = new ArrayList<>();
 
     //show/hide preview flag
-    boolean isShowingMode = true;
+    boolean isShowingMode = false;
 
     public PrototypeController(ModelAccess modelAccess) {
         super(modelAccess);
@@ -222,6 +222,9 @@ public class PrototypeController extends AbstractController implements Initializ
                 handleClickedOnTableView();
             }
         });
+
+        //hide right pane
+        mainSplitePane.getItems().remove(rightAnchorPane);
 
         //hide expand pan and button
         categoryListHBox.getChildren().remove(expandAnchorPane);
@@ -685,7 +688,6 @@ public class PrototypeController extends AbstractController implements Initializ
         mAryAddressBookItems.add("By Category");
         mAryAddressBookItems.add("By Company");
         mAryAddressBookItems.add("By Location");
-        mAryAddressBookItems.add("Outlook Data Files");
 
         categoryItemListView.getItems().addAll(mAryMailItems);
 
