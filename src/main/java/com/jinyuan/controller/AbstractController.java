@@ -1,7 +1,15 @@
 package com.jinyuan.controller;
 
 import com.jinyuan.model.EmailValidator;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import javax.swing.filechooser.FileSystemView;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class AbstractController {
 	
@@ -42,6 +50,40 @@ public abstract class AbstractController {
 
 		} else
 			tf.setText(val);
+	}
+
+	public ImageView getFileIcon(File aFile) {
+		Image fxImage;
+
+		File selectedFile = aFile;
+		String fileName = selectedFile.getName();
+		String fileExtension = "";
+		if (fileName.indexOf('.') > 0) {
+			fileExtension = fileName.substring(fileName.lastIndexOf("."), selectedFile.getName().length());
+		}
+
+		if (!selectedFile.exists()) {
+			try {
+				selectedFile = File.createTempFile("icon", fileExtension);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		FileSystemView view = FileSystemView.getFileSystemView();
+		javax.swing.Icon icon = view.getSystemIcon(selectedFile);
+
+		BufferedImage bufferedImage = new BufferedImage(
+				icon.getIconWidth(),
+				icon.getIconHeight(),
+				BufferedImage.TYPE_INT_ARGB
+		);
+		icon.paintIcon(null, bufferedImage.getGraphics(), 0, 0);
+
+		fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+		ImageView retV = new javafx.scene.image.ImageView(fxImage);
+		retV.setUserData(selectedFile);
+		return retV;
 	}
 
 	public boolean isDuplicated(TextField tf, String val) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import com.pixelduke.control.ribbon.*?>
 <?import com.pixelduke.control.*?>
 <?import javafx.scene.text.*?>
@@ -10,18 +11,129 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1096.0" styleClass="appBgWhiteColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HTMLEditor fx:id="ComposeArea" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="3.0" layoutY="169.0" prefHeight="505.0" prefWidth="1090.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="169.0" />
-      <Button layoutX="14.0" layoutY="6.0" onAction="#actionOnToButton" prefWidth="53.0" text="To..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="6.0" />
-      <TextField fx:id="toTextField" layoutX="79.0" layoutY="6.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
-      <TextField fx:id="ccTextField" layoutX="79.0" layoutY="38.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
-      <Button layoutX="14.0" layoutY="38.0" onAction="#actionOnCcButton" prefWidth="53.0" text="Cc..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="38.0" />
-      <Label layoutX="19.0" layoutY="106.0" text="Subject:" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="106.0" />
-      <TextField fx:id="SubjectField" layoutX="79.0" layoutY="102.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
-      <Button layoutX="15.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionOnAttachButton" text="Attach:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="137.0" />
-      <Label fx:id="errorLabel" layoutX="17.0" layoutY="731.0" AnchorPane.bottomAnchor="14.0" />
-      <Label fx:id="attachNamesLabel" layoutX="80.0" layoutY="141.0" text="Attchments names" />
-      <Button layoutX="533.0" layoutY="727.0" mnemonicParsing="false" onAction="#actionOnSendButton" prefHeight="25.0" prefWidth="93.0" text="Send" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="4.0" />
-      <Button layoutX="14.0" layoutY="70.0" onAction="#actionOnBccButton" prefWidth="53.0" text="Bcc..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="70.0" />
-      <TextField fx:id="bccTextField" layoutX="79.0" layoutY="70.0" prefHeight="25.0" prefWidth="546.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="5.0" />
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER" prefWidth="53.0" text="Security" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton1" mnemonicParsing="false" selected="true" text="[Class 1]" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="[Class 2]" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton3" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="[Class 3]" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton4" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" text="[Class 4]" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton5" layoutX="271.0" layoutY="10.0" mnemonicParsing="false" text="[Class 5]" />
+                  <RadioButton fx:id="mailSecurityClassRadioButton6" layoutX="184.0" layoutY="10.0" mnemonicParsing="false" text="[Class 6]" />
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button onAction="#actionOnToButton" prefWidth="53.0" text="To...">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <TextField fx:id="toTextField" prefHeight="25.0" prefWidth="546.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button onAction="#actionOnCcButton" prefWidth="53.0" text="Cc...">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <TextField fx:id="ccTextField" prefHeight="25.0" prefWidth="546.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button onAction="#actionOnBccButton" prefWidth="53.0" text="Bcc...">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <TextField fx:id="bccTextField" prefHeight="25.0" prefWidth="546.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label alignment="CENTER" prefWidth="53.0" text="Subject:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="SubjectField" prefHeight="25.0" prefWidth="546.0" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Pane prefHeight="1.0" styleClass="appBgGreyColor">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Pane>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#actionOnAttachButton" text="Attach:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <FlowPane fx:id="attachFlowPane" HBox.hgrow="ALWAYS" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Pane layoutX="10.0" layoutY="177.0" prefHeight="1.0" styleClass="appBgGreyColor">
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Pane>
+            <HTMLEditor fx:id="ComposeArea" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="505.0" prefWidth="1090.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></HTMLEditor>
+            <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label fx:id="errorLabel">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#actionOnSendButton" prefHeight="25.0" prefWidth="93.0" text="Send">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

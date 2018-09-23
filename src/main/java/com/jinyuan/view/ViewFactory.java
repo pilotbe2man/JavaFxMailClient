@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -176,22 +178,53 @@ public class ViewFactory {
 
 	public Node resolveMailCategoryIcon(String name) {
 		try {
-			String iconName = name;
-			switch (name) {
-				case "Important":
-					iconName = "images/mail_cat_important.png";
+			String iconName = name.toLowerCase();
+			Rectangle rect = new Rectangle(0, 0, 10, 15);
+			switch (iconName) {
+				case "red":
+					rect.setFill(Color.rgb(255, 113, 90));
 					break;
-				case "Normal":
-					iconName = "images/mail_cat_normal.png";
+				case "blue":
+					rect.setFill(Color.rgb(124, 198, 255));
 					break;
-				case "Emergency":
-					iconName = "images/mail_cat_emergency.png";
+				case "green":
+					rect.setFill(Color.rgb(130, 255, 138));
 					break;
+				case "orange":
+					rect.setFill(Color.rgb(255, 156, 76));
+					break;
+				case "yellow":
+					rect.setFill(Color.rgb(255, 240, 141));
+					break;
+				case "purple":
+				rect.setFill(Color.rgb(191, 154, 255));
+				break;
 				default:
-					iconName = "images/mail_cat_normal.png";
+					rect.setFill(Color.TRANSPARENT);
 					break;
 			}
-			ImageView iv = new ImageView(new Image(getClass().getResourceAsStream(iconName)));
+
+			return rect;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ImageView();
+		}
+	}
+
+	public Node resolveMailImportantIcon(String name) {
+		try {
+			ImageView iv;
+			switch (name.toLowerCase()) {
+				case "high":
+					iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_high.png")));
+					break;
+				case "low":
+					iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_row.png")));
+					break;
+				default:
+					iv = new ImageView();
+					break;
+			}
 			iv.setFitWidth(16);
 			iv.setFitHeight(16);
 			return iv;

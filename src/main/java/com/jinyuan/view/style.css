@@ -18,6 +18,30 @@ AnchorPane{
   -fx-background-color: #dddddd;
 }
 
+.mail_cat_color_red {
+  -fx-background-color: #FF715A;
+}
+
+.mail_cat_color_blue {
+  -fx-background-color: #7CC6FF;
+}
+
+.mail_cat_color_green {
+  -fx-background-color: #82FF8A;
+}
+
+.mail_cat_color_orange {
+  -fx-background-color: #FF9C4C;
+}
+
+.mail_cat_color_yellow {
+  -fx-background-color: #FFF08D;
+}
+
+.mail_cat_color_purple {
+  -fx-background-color: #BF9AFF;
+}
+
 .searchComboxBox {
   -fx-border-color: #b8b8b8;
   -fx-border-width: 1;
@@ -33,12 +57,49 @@ AnchorPane{
   -fx-background-color: #ffa81f;
 }
 
+.attach-menu-button {
+  -fx-background-color: transparent;
+  -fx-border-color: #b8b8b8;
+  -fx-border-width: 1;
+}
+
+.attach-menu-button:hover {
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.attach-menu-button:pressed {
+  -fx-background-color: #ffa81f;
+}
+
+.attach-menu-button .label {
+  -fx-text-fill: black;
+}
+
 .split-menu-button .label {
   -fx-background-color: transparent;
 }
 
 .split-menu-button .arrow-button {
   -fx-background-color: transparent;
+}
+
+.clicked_pane {
+  -fx-border-color: transparent;
+  -fx-border-width: 1;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+}
+
+.clicked_pane:hover {
+  -fx-border-color: #ffa81f;
+  -fx-background-color: #ffea6f;
+  -fx-border-radius: 0, 0;
+}
+
+.clicked_pane:pressed {
+  -fx-background-color: #ffa81f;
 }
 
 .toolBarbutton{
@@ -49,6 +110,54 @@ AnchorPane{
   -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
   -fx-font-size: 1em; /* 12 */
   -fx-text-fill: black;
+}
+
+.mail_security_class_1 {
+  -fx-text-fill: #7CC6FF;
+}
+
+.mail_security_class_2 {
+  -fx-text-fill: #FF715A;
+}
+
+.mail_security_class_3 {
+  -fx-text-fill: #82FF8A;
+}
+
+.mail_security_class_4 {
+  -fx-text-fill: #FF9C4C;
+}
+
+.mail_security_class_5 {
+  -fx-text-fill: #FFF08D;
+}
+
+.mail_security_class_6 {
+  -fx-text-fill: #BF9AFF;
+}
+
+.mail_attach_security_class_1 {
+  -fx-text-fill: #7CC6FF;
+}
+
+.mail_attach_security_class_2 {
+  -fx-text-fill: #FF715A;
+}
+
+.mail_attach_security_class_3 {
+  -fx-text-fill: #82FF8A;
+}
+
+.mail_attach_security_class_4 {
+  -fx-text-fill: #FF9C4C;
+}
+
+.mail_attach_security_class_5 {
+  -fx-text-fill: #FFF08D;
+}
+
+.mail_attach_security_class_6 {
+  -fx-text-fill: #BF9AFF;
 }
 
 .toolBarbutton:hover {

@@ -2,6 +2,8 @@ package com.jinyuan.controller;
 
 import com.jinyuan.model.AddressBookItem;
 import com.jinyuan.view.ViewFactory;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -312,39 +314,33 @@ public class PrototypeController extends AbstractController implements Initializ
     }
 
     final ObservableList<MailItem> mailData = FXCollections.observableArrayList(
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("Important", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB"),
-            new MailItem("Normal",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB"),
-            new MailItem("Emergency",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB"),
-            new MailItem("Standard",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB"),
-            new MailItem("SoSo", "michael.brown@example.com", "Indeed job growing", "2018-09-18 Monday 12:30:34", "40KB")
+            new MailItem("High", "Red", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Blue",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", true, true),
+            new MailItem("", "Green",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB", true, true),
+            new MailItem("Low", "",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB", true, false),
+            new MailItem("High", "Purple", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Yellow",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("Low", "Blue",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("", "Green",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB", true, false),
+            new MailItem("Low", "",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB", true, false),
+            new MailItem("High", "Purple", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Yellow",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("Low", "Blue",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("", "Green",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB", true, false),
+            new MailItem("Low", "",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB", true, false),
+            new MailItem("High", "Purple", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Yellow",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("Low", "Blue",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("", "Green",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB", true, false),
+            new MailItem("Low", "",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB", true, false),
+            new MailItem("High", "Purple", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Yellow",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("Low", "Blue",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("", "Green",  "ethan.williams@example.com", "New gallery", "2018-09-18 Friday 11:30:34", "20KB", true, false),
+            new MailItem("Low", "",  "emma.jones@example.com", "New market launched", "2018-09-18 Tuesday 12:30:34", "30KB", true, false),
+            new MailItem("High", "Purple", "jacob.smith@example.com", "Receiving the packages", "2018-09-18 Wednesday 09:30:34", "34KB", true, true),
+            new MailItem("Low", "Yellow",  "isabella.johnson@example.com", "Lost things", "2018-09-18 Saturday 10:30:34", "23KB", false, true),
+            new MailItem("", "Red", "michael.brown@example.com", "Indeed job growing", "2018-09-18 Monday 12:30:34", "40KB", true, true)
     );
 
     final ObservableList<AddressBookItem> addressBookData = FXCollections.observableArrayList(
@@ -700,26 +696,35 @@ public class PrototypeController extends AbstractController implements Initializ
 
     public void initMailBoxTable(String boxName) {
 
-        TableColumn categoryCol = (TableColumn) mailItemTableView.getColumns().get(0);
-        TableColumn fromCol = (TableColumn) mailItemTableView.getColumns().get(1);
-        TableColumn subjectCol = (TableColumn) mailItemTableView.getColumns().get(2);
-        TableColumn receivedDateCol = (TableColumn) mailItemTableView.getColumns().get(3);
-        TableColumn sizeCol = (TableColumn) mailItemTableView.getColumns().get(4);
+        TableColumn importantCol = (TableColumn) mailItemTableView.getColumns().get(0);
+        TableColumn attachCol = (TableColumn) mailItemTableView.getColumns().get(1);
+        TableColumn categoryCol = (TableColumn) mailItemTableView.getColumns().get(2);
+        TableColumn fromCol = (TableColumn) mailItemTableView.getColumns().get(3);
+        TableColumn subjectCol = (TableColumn) mailItemTableView.getColumns().get(4);
+        TableColumn receivedDateCol = (TableColumn) mailItemTableView.getColumns().get(5);
+        TableColumn sizeCol = (TableColumn) mailItemTableView.getColumns().get(6);
+        TableColumn flagCol = (TableColumn) mailItemTableView.getColumns().get(7);
 
-        categoryCol.setPrefWidth(139);
+        importantCol.setVisible(true);
+        attachCol.setVisible(true);
+        categoryCol.setVisible(true);
+
+        categoryCol.setPrefWidth(120);
         fromCol.setPrefWidth(206);
         subjectCol.setPrefWidth(350);
         receivedDateCol.setPrefWidth(184);
         sizeCol.setPrefWidth(64);
+        flagCol.setPrefWidth(20);
 
-        ((TableColumn) mailItemTableView.getColumns().get(5)).setVisible(false);
-        ((TableColumn) mailItemTableView.getColumns().get(6)).setVisible(false);
-        ((TableColumn) mailItemTableView.getColumns().get(7)).setVisible(false);
         ((TableColumn) mailItemTableView.getColumns().get(8)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(9)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(10)).setVisible(false);
+        ((TableColumn) mailItemTableView.getColumns().get(11)).setVisible(false);
 
         categoryCol.setText("Category");
         subjectCol.setText("Subject");
         sizeCol.setText("Size");
+        flagCol.setText("");
 
         switch (boxName) {
             case "RSS Feeds":
@@ -744,24 +749,77 @@ public class PrototypeController extends AbstractController implements Initializ
                 break;
         }
 
-        categoryCol.setCellValueFactory(new PropertyValueFactory("category"));
-
-        categoryCol.setCellFactory(new Callback<TableColumn<MailItem, String>, TableCell<MailItem, String>>() {
+        importantCol.setCellValueFactory(new PropertyValueFactory("important"));
+        importantCol.setCellFactory(new Callback<TableColumn<MailItem, MailItem>, TableCell<MailItem, MailItem>>() {
             @Override
-            public TableCell<MailItem, String> call(TableColumn<MailItem, String> param) {
+            public TableCell<MailItem, MailItem> call(TableColumn<MailItem, MailItem> param) {
                 TableCell cell = new TableCell() {
                     @Override
                     protected void updateItem(Object item, boolean empty) {
                         if (isSelectedMailCategory()) {
-                            if(item!=null){
+                            if (item != null) {
+                                ImageView imageview = (ImageView) ViewFactory.defaultFactory.resolveMailImportantIcon(item.toString());
+                                setGraphic(imageview);
+                            } else {
+                                setGraphic(null);
+                            }
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+
+        attachCol.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/attach.png"));
+        attachCol.setCellValueFactory(new PropertyValueFactory("attach"));
+        attachCol.setCellFactory(new Callback<TableColumn<MailItem, MailItem>, TableCell<MailItem, MailItem>>() {
+            @Override
+            public TableCell<MailItem, MailItem> call(TableColumn<MailItem, MailItem> param) {
+                TableCell cell = new TableCell() {
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        if (isSelectedMailCategory()) {
+                            if (item != null) {
+                                if ((Boolean) item) {
+                                    setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/attach.png"));
+                                } else {
+                                    setGraphic(null);
+                                }
+                            } else {
+                                setGraphic(null);
+                            }
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+
+        categoryCol.setCellValueFactory(new PropertyValueFactory("category"));
+        categoryCol.setCellFactory(new Callback<TableColumn<MailItem, MailItem>, TableCell<MailItem, MailItem>>() {
+            @Override
+            public TableCell<MailItem, MailItem> call(TableColumn<MailItem, MailItem> param) {
+                TableCell cell = new TableCell() {
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        if (isSelectedMailCategory()) {
+                            if (item != null) {
                                 HBox box= new HBox();
                                 box.setSpacing(10) ;
                                 VBox vbox = new VBox();
-                                vbox.getChildren().add(new Label(item.toString()));
 
-                                ImageView imageview = (ImageView) ViewFactory.defaultFactory.resolveMailCategoryIcon(item.toString());
-                                imageview.setFitHeight(16);
-                                imageview.setFitWidth(16);
+                                if(!item.toString().isEmpty())
+                                    vbox.getChildren().add(new Label(item.toString() + " category"));
+                                else
+                                    vbox.getChildren().add(new Label("(none)"));
+
+                                Node imageview = ViewFactory.defaultFactory.resolveMailCategoryIcon(item.toString());
 
                                 box.getChildren().addAll(imageview,vbox);
                                 setGraphic(box);
@@ -769,10 +827,40 @@ public class PrototypeController extends AbstractController implements Initializ
                                 setGraphic(null);
                             }
                         } else {
-                            if(item!=null)
-                                setGraphic(new Label(item.toString()));
-                            else
+                            setGraphic(null);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
+
+        flagCol.setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/follow_down_small.png"));
+        flagCol.setCellValueFactory(new PropertyValueFactory("follow"));
+        flagCol.setCellFactory(new Callback<TableColumn<MailItem, MailItem>, TableCell<MailItem, MailItem>>() {
+            @Override
+            public TableCell<MailItem, MailItem> call(TableColumn<MailItem, MailItem> param) {
+                TableCell cell = new TableCell() {
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        if (isSelectedMailCategory()) {
+                            if (item != null) {
+                                if ((Boolean) item) {
+                                    setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/follow_up_small.png"));
+                                } else {
+                                    setGraphic(ViewFactory.defaultFactory.resolveIconWithName("images/follow_down_small.png"));
+                                }
+                            } else {
                                 setGraphic(null);
+                            }
+                        } else {
+                            if (item != null) {
+                                setText(item.toString());
+                            } else {
+                                setText("");
+                            }
+                            setGraphic(null);
                         }
                     }
                 };
@@ -844,16 +932,19 @@ public class PrototypeController extends AbstractController implements Initializ
 
     public void initAddressBookTable(String type) {
 
-        TableColumn fullNameCol = (TableColumn) mailItemTableView.getColumns().get(0);
-        TableColumn companyCol = (TableColumn) mailItemTableView.getColumns().get(1);
-        TableColumn fileAsCol = (TableColumn) mailItemTableView.getColumns().get(2);
-        TableColumn businessPhoneCol = (TableColumn) mailItemTableView.getColumns().get(3);
-        TableColumn businessFaxCol = (TableColumn) mailItemTableView.getColumns().get(4);
+        ((TableColumn)mailItemTableView.getColumns().get(0)).setVisible(false);
+        ((TableColumn)mailItemTableView.getColumns().get(1)).setVisible(false);
+        ((TableColumn)mailItemTableView.getColumns().get(2)).setVisible(false);
 
-        TableColumn homePhoneCol = (TableColumn) mailItemTableView.getColumns().get(5);
-        TableColumn mobilePhoneCol = (TableColumn) mailItemTableView.getColumns().get(6);
-        TableColumn journalCol = (TableColumn) mailItemTableView.getColumns().get(7);
-        TableColumn categoriesCol = (TableColumn) mailItemTableView.getColumns().get(8);
+        TableColumn fullNameCol = (TableColumn) mailItemTableView.getColumns().get(3);
+        TableColumn companyCol = (TableColumn) mailItemTableView.getColumns().get(4);
+        TableColumn fileAsCol = (TableColumn) mailItemTableView.getColumns().get(5);
+        TableColumn businessPhoneCol = (TableColumn) mailItemTableView.getColumns().get(6);
+        TableColumn businessFaxCol = (TableColumn) mailItemTableView.getColumns().get(7);
+        TableColumn homePhoneCol = (TableColumn) mailItemTableView.getColumns().get(8);
+        TableColumn mobilePhoneCol = (TableColumn) mailItemTableView.getColumns().get(9);
+        TableColumn journalCol = (TableColumn) mailItemTableView.getColumns().get(10);
+        TableColumn categoriesCol = (TableColumn) mailItemTableView.getColumns().get(11);
 
         fullNameCol.setPrefWidth(140);
         companyCol.setPrefWidth(140);
@@ -870,6 +961,11 @@ public class PrototypeController extends AbstractController implements Initializ
         fileAsCol.setText("File As");
         businessPhoneCol.setText("Business Phone");
         businessFaxCol.setText("Business Fax");
+        businessFaxCol.setGraphic(null);
+        homePhoneCol.setText("Home Phone");
+        mobilePhoneCol.setText("Mobile Phone");
+        journalCol.setText("Journal");
+        categoriesCol.setText("Categorise");
 
         homePhoneCol.setVisible(true);
         mobilePhoneCol.setVisible(true);
@@ -966,6 +1062,7 @@ public class PrototypeController extends AbstractController implements Initializ
     }
 
     public static class MailItem {
+        private StringProperty important;
         private StringProperty category;
         private StringProperty from;
         private StringProperty to;
@@ -973,8 +1070,12 @@ public class PrototypeController extends AbstractController implements Initializ
         private StringProperty receivedDate;
         private StringProperty sentDate;
         private StringProperty size;
+        private BooleanProperty attach;
+        private BooleanProperty follow;
+        private boolean isCC = true;
 
-        private MailItem(String category, String from, String subject, String receivedDate, String size) {
+        private MailItem(String important, String category, String from, String subject, String receivedDate, String size, Boolean attach, Boolean follow) {
+            this.important = new SimpleStringProperty(important);
             this.category = new SimpleStringProperty(category);
             this.from = new SimpleStringProperty(from);
             this.to = new SimpleStringProperty(from);
@@ -982,8 +1083,11 @@ public class PrototypeController extends AbstractController implements Initializ
             this.receivedDate = new SimpleStringProperty(receivedDate);
             this.sentDate = new SimpleStringProperty(receivedDate);
             this.size = new SimpleStringProperty(size);
+            this.attach = new SimpleBooleanProperty(attach);
+            this.follow = new SimpleBooleanProperty(follow);
         }
 
+        public StringProperty importantProperty() { return important; }
         public StringProperty categoryProperty() { return category; }
         public StringProperty fromProperty() { return from; }
         public StringProperty toProperty() { return to; }
@@ -991,6 +1095,8 @@ public class PrototypeController extends AbstractController implements Initializ
         public StringProperty receivedDateProperty() { return receivedDate; }
         public StringProperty sentDateProperty() { return sentDate; }
         public StringProperty sizeProperty() { return size; }
+        public BooleanProperty attachProperty() { return attach; }
+        public BooleanProperty followProperty() { return follow; }
 
         @Override
         public String toString() {
@@ -1001,6 +1107,10 @@ public class PrototypeController extends AbstractController implements Initializ
                     receivedDate.getValue() + ", sent date : " +
                     sentDate.getValue() + ", category : " +
                     category.getValue();
+        }
+
+        public boolean isCC() {
+            return isCC;
         }
     }
 

@@ -288,11 +288,14 @@
                                           </VBox>
                                           <TableView fx:id="mailItemTableView" onMouseClicked="#handleClickedOnTableView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                             <columns>
+                                                <TableColumn prefWidth="20.0" text="!" />
+                                                <TableColumn prefWidth="20.0" text="\@" />
                                               <TableColumn prefWidth="139.0" text="Category" />
                                               <TableColumn minWidth="0.0" prefWidth="206.0" text="From" />
                                                 <TableColumn minWidth="0.0" prefWidth="284.0" text="Subject" />
                                                 <TableColumn minWidth="0.0" prefWidth="184.0" text="Received" />
                                                 <TableColumn minWidth="0.0" prefWidth="49.0" text="Size" />
+                                                <TableColumn minWidth="0.0" prefWidth="20.0" text="Flag" />
                                                 <TableColumn prefWidth="92.0" text="Home Phone" />
                                                 <TableColumn prefWidth="139.0" text="Mobile Phone" />
                                                 <TableColumn prefWidth="139.0" text="Journal" />

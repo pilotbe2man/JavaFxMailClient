@@ -7,10 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="appBgWhiteColor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="rootVBox" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="appBgWhiteColor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
@@ -22,7 +21,29 @@
                   </Button>
                   <Button fx:id="forwardInContentButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward" />
                   <Pane HBox.hgrow="ALWAYS" />
-                  <Label fx:id="receivedDateLabel" text="12:34 PM" />
+                  <Label fx:id="dateLabel" text="12:34 PM" />
+               </children>
+               <VBox.margin>
+                  <Insets right="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <VBox.margin>
+                  <Insets left="10.0" right="5.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#handleOnFavoriteButton" styleClass="clicked_pane">
+                     <children>
+                        <Label text="Favorite">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="favLabel" text=":" />
+                     </children>
+                  </HBox>
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="mailSecurityClassLabel" styleClass="mail_security_class" text="Class 10" />
                </children>
             </HBox>
             <Label fx:id="fromLabel" text="From:">
@@ -30,7 +51,7 @@
                   <Font size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
+                  <Insets left="10.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="subjectLabel" layoutX="10.0" layoutY="110.0" text="Subject:">
@@ -41,7 +62,58 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Label>
-            <WebView fx:id="mailContentWebView" prefHeight="644.0" prefWidth="1106.0" VBox.vgrow="ALWAYS">
+            <FlowPane fx:id="toFollowPane">
+               <children>
+                  <Label text="To">
+                     <FlowPane.margin>
+                        <Insets bottom="5.0" right="20.0" top="5.0" />
+                     </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <FlowPane fx:id="ccFlowPane" layoutX="25.0" layoutY="114.0">
+               <children>
+                  <Label fx:id="ccLabel" text="Cc">
+                     <FlowPane.margin>
+                        <Insets bottom="5.0" right="20.0" top="5.0" />
+                     </FlowPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <Pane fx:id="attachTopDivPane" prefHeight="1.0" styleClass="appBgGreyColor">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Pane>
+            <FlowPane fx:id="attachFlowPane" layoutX="25.0" layoutY="144.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <Pane fx:id="attachDownDivPane" layoutX="25.0" layoutY="224.0" prefHeight="1.0" styleClass="appBgGreyColor">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+            </Pane>
+            <WebView fx:id="mailContentWebView" prefHeight="510.0" prefWidth="1105.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
