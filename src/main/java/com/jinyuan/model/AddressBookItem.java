@@ -4,64 +4,42 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class AddressBookItem {
-    private StringProperty fullName;
-    private StringProperty company;
-    private StringProperty fileAs;
-    private StringProperty businessPhone;
-    private StringProperty businessFax;
-    private StringProperty homePhone;
-    private StringProperty mobilePhone;
-    private StringProperty journal;
-    private StringProperty categories;
-    private StringProperty mail;
+    private StringProperty userID;
+    private StringProperty userDepartment;
+    private StringProperty userPath;
+    private StringProperty userName;
+    private StringProperty mailAddress;
+    private StringProperty userLevel;
+    private StringProperty userSecurityLevel;
 
-    public AddressBookItem(
-            String fullName,
-            String mail,
-            String company,
-            String fileAs,
-            String businessPhone,
-            String businessFax,
-            String homePhone,
-            String mobilePhone,
-            String journal,
-            String categories) {
+    public AddressBookItem( String userID, String userDepartment, String userPath, String userName, String mailAddress, String userLevel, String userSecurityLevel) {
 
-        this.fullName = new SimpleStringProperty(fullName);
-        this.mail = new SimpleStringProperty(mail);
-        this.company = new SimpleStringProperty(company);
-        this.fileAs = new SimpleStringProperty(fileAs);
-        this.businessPhone = new SimpleStringProperty(businessPhone);
-        this.businessFax = new SimpleStringProperty(businessFax);
-        this.homePhone = new SimpleStringProperty(homePhone);
-        this.mobilePhone = new SimpleStringProperty(mobilePhone);
-        this.journal = new SimpleStringProperty(journal);
-        this.categories = new SimpleStringProperty(categories);
+        this.userID = new SimpleStringProperty(userID);
+        this.userDepartment = new SimpleStringProperty(userDepartment);
+        this.userPath = new SimpleStringProperty(userPath);
+        this.userName = new SimpleStringProperty(userName);
+        this.mailAddress = new SimpleStringProperty(mailAddress);
+        this.userLevel = new SimpleStringProperty(userLevel);
+        this.userSecurityLevel = new SimpleStringProperty(userSecurityLevel);
     }
 
-    public StringProperty fullNameProperty() { return fullName; }
-    public StringProperty mailProperty() { return mail; }
-    public StringProperty companyProperty() { return company; }
-    public StringProperty fileAsProperty() { return fileAs; }
-    public StringProperty businessPhoneProperty() { return businessPhone; }
-    public StringProperty businessFaxProperty() { return businessFax; }
-    public StringProperty homePhoneProperty() { return homePhone; }
-    public StringProperty mobilePhoneProperty() { return mobilePhone; }
-    public StringProperty journalProperty() { return journal; }
-    public StringProperty categoriesProperty() { return categories; }
+    public StringProperty userIDProperty() { return userID; }
+    public StringProperty userDepartmentProperty() { return userDepartment; }
+    public StringProperty userPathProperty() { return userPath; }
+    public StringProperty userNameProperty() { return userName; }
+    public StringProperty mailAddressProperty() { return mailAddress; }
+    public StringProperty userLevelProperty() { return userLevel; }
+    public StringProperty userSecurityLevelProperty() { return userSecurityLevel; }
 
     @Override
     public String toString() {
-        return "fullName : <" +
-                fullName.getValue() + ">, mail : <" +
-                mail.getValue() + ">, company : " +
-                company.getValue() + ", fileAs : " +
-                fileAs.getValue() + ", businessPhone : " +
-                businessPhone.getValue() + ", businessFax : " +
-                businessFax.getValue() + ", homePhone : " +
-                homePhone.getValue() + ", mobilePhone : " +
-                mobilePhone.getValue() + ", journal : " +
-                journal.getValue() + ", categories : " +
-                categories.getValue();
+        return "User ID : <" +
+                userID.getValue() + ">, User Department : <" +
+                userDepartment.getValue() + ">, User Path : " +
+                userPath.getValue() + ", User Name : " +
+                userName.getValue() + ", Mail Address : " +
+                mailAddress.getValue() + ", User Level : " +
+                userLevel.getValue() + ", User Security Level : " +
+                userSecurityLevel.getValue();
     }
 }

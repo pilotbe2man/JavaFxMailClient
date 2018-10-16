@@ -6,6 +6,9 @@ import com.jinyuan.controller.*;
 import com.jinyuan.controller.persistence.PersistenceAcess;
 import com.jinyuan.model.EmailMessageBean;
 
+import com.jinyuan.model.GlobalVariables.GlobalVariables;
+import com.jinyuan.model.MailSecurity;
+import com.sun.javafx.iio.gif.GIFImageLoader2;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -49,7 +52,6 @@ public class ViewFactory {
 		} else {
 			throw new OperationNotSupportedException("Main Scene allready initialized!!!!");
 		}
-
 	}
 
 	public Scene getChooseUserScene() {
@@ -155,14 +157,14 @@ public class ViewFactory {
 		}
 	}
 
-	public Node resolveCategoryIcon(String name) {
+	public Node resolveCategoryIcon(int aIndex) {
 		try {
-			String iconName = name;
-			switch (name) {
-				case "Mail":
+			String iconName = "";
+			switch (aIndex) {
+				case PrototypeController.CAT_MAIL:
 					iconName = "images/mail.png";
 					break;
-				case "AddressBook":
+				case PrototypeController.CAT_ADB:
 					iconName = "images/contacts.png";
 					break;
 			}
@@ -177,33 +179,23 @@ public class ViewFactory {
 	}
 
 	public Node resolveMailCategoryIcon(String name) {
+		String color = "";
+		for (int i = 0; i < GlobalVariables.mailSecurityList.size(); i++) {
+			MailSecurity security = GlobalVariables.mailSecurityList.get(i);
+			if (security.levelName.equalsIgnoreCase(name)) {
+				color = security.levelColor;
+				break;
+			}
+		}
+
 		try {
 			String iconName = name.toLowerCase();
 			Rectangle rect = new Rectangle(0, 0, 10, 15);
-			switch (iconName) {
-				case "red":
-					rect.setFill(Color.rgb(255, 113, 90));
-					break;
-				case "blue":
-					rect.setFill(Color.rgb(124, 198, 255));
-					break;
-				case "green":
-					rect.setFill(Color.rgb(130, 255, 138));
-					break;
-				case "orange":
-					rect.setFill(Color.rgb(255, 156, 76));
-					break;
-				case "yellow":
-					rect.setFill(Color.rgb(255, 240, 141));
-					break;
-				case "purple":
-				rect.setFill(Color.rgb(191, 154, 255));
-				break;
-				default:
-					rect.setFill(Color.TRANSPARENT);
-					break;
+			if (color.length() > 0) {
+				rect.setFill(Color.valueOf(color));
+			} else {
+				rect.setFill(Color.TRANSPARENT);
 			}
-
 			return rect;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -212,18 +204,25 @@ public class ViewFactory {
 	}
 
 	public Node resolveMailImportantIcon(String name) {
+
+		int level = 0;
+		for (int i = 0; i < GlobalVariables.mailSecurityList.size(); i++) {
+			MailSecurity security = GlobalVariables.mailSecurityList.get(i);
+			if (security.levelName.equalsIgnoreCase(name)) {
+				level = security.level;
+				break;
+			}
+		}
+
+
 		try {
 			ImageView iv;
-			switch (name.toLowerCase()) {
-				case "high":
-					iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_high.png")));
-					break;
-				case "low":
-					iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_row.png")));
-					break;
-				default:
-					iv = new ImageView();
-					break;
+			if (level >= 20) {
+				iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_high.png")));
+			} else if (level <= 15){
+				iv = new ImageView(new Image(getClass().getResourceAsStream("images/important_row.png")));
+			} else {
+				iv = new ImageView();
 			}
 			iv.setFitWidth(16);
 			iv.setFitHeight(16);
@@ -234,32 +233,29 @@ public class ViewFactory {
 		}
 	}
 
-	public Node resolveMailBoxListItemIcon(String name) {
+	public Node resolveMailBoxListItemIcon(int aIndex) {
 		try {
-			String iconName = name;
-			switch (name) {
-				case "RSS Feeds":
-					iconName = "images/rss.png";
-					break;
-				case "Drafts":
+			String iconName = "";
+			switch (aIndex) {
+				case PrototypeController.CAT_MAIL_DRAFTS:
 					iconName = "images/drafts.png";
 					break;
-				case "Outbox":
+				case PrototypeController.CAT_MAIL_OUTBOX:
 					iconName = "images/outbox.png";
 					break;
-				case "Junk E-mail":
+				case PrototypeController.CAT_MAIL_JUNK:
 					iconName = "images/junk_mail.png";
 					break;
-				case "Inbox":
+				case PrototypeController.CAT_MAIL_INBOX:
 					iconName = "images/inbox.png";
 					break;
-				case "Sent Items":
+				case PrototypeController.CAT_MAIL_SENT:
 					iconName = "images/sent.png";
 					break;
-				case "Deleted Items":
+				case PrototypeController.CAT_MAIL_DELETE:
 					iconName = "images/trash.png";
 					break;
-				case "Search Folders":
+				case PrototypeController.CAT_MAIL_SEARCH:
 					iconName = "images/search_folder.png";
 					break;
 			}

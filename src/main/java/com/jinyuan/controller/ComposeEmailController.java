@@ -85,7 +85,8 @@ public class ComposeEmailController extends AbstractController implements Initia
 				new EmailSenderService(getModelAccess().getEmailAccountByName(SenderChoice.getValue()),
 						SubjectField.getText(),
 						RecipientField.getText(),
-						CcField.getText(), 
+						CcField.getText(),
+						null,
 						ComposeArea.getHtmlText(),
 						attachments);
 		emailSenderService.restart();
@@ -94,8 +95,6 @@ public class ComposeEmailController extends AbstractController implements Initia
 				errorLabel.setText("Error while sending message");
 			}
 		});
-		
-
 	}
 
 	@Override

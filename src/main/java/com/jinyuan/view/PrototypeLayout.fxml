@@ -80,7 +80,7 @@
                            </tooltip>
                         </SplitMenuButton>
                         <Separator orientation="VERTICAL" />
-                        <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.print">
+                        <Button fx:id="printButton" mnemonicParsing="false" onAction="#handeClickedOnPrintMenuButton" styleClass="toolBarbutton" text="%tb.print">
                            <tooltip>
                               <Tooltip text="Print(Microsoft print to PDF) (Ctrl+P)" />
                            </tooltip></Button>
@@ -88,20 +88,20 @@
                            <tooltip>
                               <Tooltip text="Move To Folder" />
                            </tooltip></Button>
-                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.delete">
+                        <Button fx:id="deleteButton" layoutX="153.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnDeleteMenuButton" styleClass="toolBarbutton" text="%tb.delete">
                            <tooltip>
                               <Tooltip text="Delete(Crtl+D)" />
                            </tooltip></Button>
                         <Separator layoutX="87.0" layoutY="10.0" orientation="VERTICAL" />
-                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.reply">
+                        <Button fx:id="replyButton" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnReplyMenuButton" styleClass="toolBarbutton" text="%tb.reply">
                            <tooltip>
                               <Tooltip text="Reply(Ctrl+R)" />
                            </tooltip></Button>
-                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.replyToAll">
+                        <Button fx:id="replyToAllButton" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnReplyAllMenuButton" styleClass="toolBarbutton" text="%tb.replyToAll">
                            <tooltip>
                               <Tooltip text="Reply to All(Ctrl+Shift+R)" />
                            </tooltip></Button>
-                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.forward">
+                        <Button fx:id="forwardButton" layoutX="307.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnForwardMenuButton" styleClass="toolBarbutton" text="%tb.forward">
                            <tooltip>
                               <Tooltip text="Forward(Ctrl+F)" />
                            </tooltip></Button>
@@ -110,7 +110,7 @@
                            <tooltip>
                               <Tooltip text="Categorize" />
                            </tooltip></Button>
-                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="%tb.followUp">
+                        <Button fx:id="followUpButton" layoutX="494.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnFollowMenuButton" styleClass="toolBarbutton" text="%tb.followUp">
                            <tooltip>
                               <Tooltip text="Follow Up" />
                            </tooltip></Button>
@@ -151,7 +151,7 @@
             </VBox>
          </top>
          <bottom>
-            <Label fx:id="itemsLabel" text="150 items" BorderPane.alignment="CENTER_LEFT">
+            <Label fx:id="itemsLabel" BorderPane.alignment="CENTER_LEFT">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>

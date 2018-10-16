@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="main">
+    <output-path>$PROJECT_DIR$/out/artifacts/main</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.jinyuan.App" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="main.jar">
+        <element id="module-output" name="main" />
+      </element>
+    </root>
+  </artifact>
+</component>

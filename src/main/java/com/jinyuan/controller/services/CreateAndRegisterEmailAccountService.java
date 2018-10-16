@@ -1,6 +1,8 @@
 package com.jinyuan.controller.services;
 
+import com.jinyuan.controller.AbstractController;
 import com.jinyuan.controller.ModelAccess;
+import com.jinyuan.controller.PrototypeController;
 import com.jinyuan.model.EmailAccountBean;
 import com.jinyuan.model.EmailConstants;
 import com.jinyuan.model.folder.EmailFolderBean;
@@ -13,6 +15,8 @@ public class CreateAndRegisterEmailAccountService extends Service<Integer>{
 	private String emailAddress;
 	private String password;
 	private ModelAccess modelAccess;
+
+	public AbstractController parent;
 
 	public CreateAndRegisterEmailAccountService(String emailAddress, String password,
 			 ModelAccess modelAccess) {
@@ -34,6 +38,7 @@ public class CreateAndRegisterEmailAccountService extends Service<Integer>{
 						modelAccess.getRoot().getChildren().add(emailFolderBean);
 						FetchFoldersService fetchFoldersService = new FetchFoldersService(emailFolderBean,
 								emailAccount, modelAccess);
+						fetchFoldersService.parent = parent;
 						fetchFoldersService.restart();
 					}
 				

@@ -110,7 +110,6 @@ public class AddAccountController extends AbstractController implements Initiali
     		}
     	});
     }
-    
 
 	public AddAccountController(ModelAccess modelAccess) {
 		super(modelAccess);

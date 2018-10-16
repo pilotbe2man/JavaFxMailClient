@@ -6,7 +6,9 @@ import javax.mail.MessagingException;
 import javax.mail.event.MessageCountAdapter;
 import javax.mail.event.MessageCountEvent;
 
+import com.jinyuan.controller.AbstractController;
 import com.jinyuan.controller.ModelAccess;
+import com.jinyuan.controller.PrototypeController;
 import com.jinyuan.model.EmailAccountBean;
 import com.jinyuan.model.folder.EmailFolderBean;
 import com.jinyuan.view.ViewFactory;
@@ -20,6 +22,7 @@ public class FetchFoldersService extends Service<Void>{
 	private EmailFolderBean<String> foldersRoot;
 	private EmailAccountBean emailAccountBean;
 	private ModelAccess modelAccess;
+	public AbstractController parent;
 	
 	public FetchFoldersService(EmailFolderBean<String> foldersRoot, EmailAccountBean emailAccountBean, ModelAccess modelAccess) {
 		this.foldersRoot = foldersRoot;
@@ -44,7 +47,7 @@ public class FetchFoldersService extends Service<Void>{
 				if(emailAccountBean != null){
 					Folder[] folders = emailAccountBean.getStore().getDefaultFolder().list();
 					for(Folder folder: folders){
-						
+
 						if (ViewFactory.defaultFactory.wasLogout()) {
 							System.out.print("main scene was not initialized!!!");
 							return null;
@@ -57,24 +60,26 @@ public class FetchFoldersService extends Service<Void>{
 						addMessageListenerToFolder(folder, item);
 						System.out.println("added " +  folder.getName());
 
-						Folder[] subFolders = folder.list();
+//						Folder[] subFolders = folder.list();
 						FetchMessagesOnFolderService fetchMessagesOnFolderService = new FetchMessagesOnFolderService(item, folder);
+						fetchMessagesOnFolderService.parent = parent;
 						fetchMessagesOnFolderService.restart();
-						for(Folder subFolder: subFolders){
-							
-							if (ViewFactory.defaultFactory.wasLogout()) {
-								System.out.print("main scene was not initialized!!!");
-								return null;
-							}
 
-							EmailFolderBean<String> subItem = new EmailFolderBean<String>(subFolder.getName(), subFolder.getFullName());
-							item.getChildren().add(subItem);
-							modelAccess.addFolder(subFolder);
-							addMessageListenerToFolder(subFolder, subItem);
-							System.out.println("added " +  subFolder.getName());
-							FetchMessagesOnFolderService fetchMessagesOnSubFolderService = new FetchMessagesOnFolderService(subItem, subFolder);
-							fetchMessagesOnSubFolderService.restart();
-						}
+//						for(Folder subFolder: subFolders){
+//
+//							if (ViewFactory.defaultFactory.wasLogout()) {
+//								System.out.print("main scene was not initialized!!!");
+//								return null;
+//							}
+//
+//							EmailFolderBean<String> subItem = new EmailFolderBean<String>(subFolder.getName(), subFolder.getFullName());
+//							item.getChildren().add(subItem);
+//							modelAccess.addFolder(subFolder);
+//							addMessageListenerToFolder(subFolder, subItem);
+//							System.out.println("added " +  subFolder.getName());
+//							FetchMessagesOnFolderService fetchMessagesOnSubFolderService = new FetchMessagesOnFolderService(subItem, subFolder);
+//							fetchMessagesOnSubFolderService.restart();
+//						}
 					}
 				}
 				return null;
@@ -82,10 +87,7 @@ public class FetchFoldersService extends Service<Void>{
 			
 		};
 	}
-	
-	
-	
-	
+
 	private void addMessageListenerToFolder(Folder folder, EmailFolderBean<String> item){
 		folder.addMessageCountListener(new MessageCountAdapter() {
 			@Override
@@ -94,7 +96,10 @@ public class FetchFoldersService extends Service<Void>{
 					try {
 						Message currentMessage = folder.getMessage(folder.getMessageCount() - i);
 						item.addEmail(currentMessage, 0);
-						
+
+						PrototypeController controller = (PrototypeController)parent;
+						controller.updateMailItem(currentMessage);
+
 					} catch (MessagingException e1) {
 						e1.printStackTrace();
 					}

@@ -2,6 +2,7 @@ package com.jinyuan.controller.services;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.activation.DataHandler;
@@ -30,15 +31,17 @@ public class EmailSenderService extends Service<Integer> {
 	private String subject;
 	private String recipient;
 	private String cc;
+	private String bcc;
 	private String content;
 	private List<File> attachments = new ArrayList<File>();
 
-	public EmailSenderService(EmailAccountBean emailAccountBean, String subject, String recipient, String cc,
+	public EmailSenderService(EmailAccountBean emailAccountBean, String subject, String recipient, String cc, String bcc,
 			String content, List<File> attachments) {
 		this.emailAccountBean = emailAccountBean;
 		this.subject = subject;
 		this.recipient = recipient;
 		this.cc = cc;
+		this.bcc = bcc;
 		this.content = content;
 		this.attachments = attachments;
 	}
@@ -57,12 +60,15 @@ public class EmailSenderService extends Service<Integer> {
 					if (cc != null) {
 						message.addRecipients(Message.RecipientType.CC, cc);
 					}
+					if (bcc != null) {
+						message.addRecipients(Message.RecipientType.BCC, bcc);
+					}
 					message.setSubject(subject);
 
 					// Setting the content:
 					Multipart multipart = new MimeMultipart();
 					BodyPart messageBodyPart = new MimeBodyPart();
-					messageBodyPart.setContent(content, "text/html");
+					messageBodyPart.setContent(content, "text/html; charset=UTF-8");
 					multipart.addBodyPart(messageBodyPart);
 
 					// adding attachments:
@@ -76,11 +82,15 @@ public class EmailSenderService extends Service<Integer> {
 						}
 					}
 					message.setContent(multipart);
-
+					
 					// Sending the message:
-					Transport transport = emailAccountBean.transportConnect();
-					transport.sendMessage(message, message.getAllRecipients());
-					transport.close();
+//					Transport transport = emailAccountBean.transportConnect();
+//					transport.sendMessage(message, message.getAllRecipients());
+
+					message.setSentDate(new Date());
+					Transport.send(message, message.getAllRecipients());
+
+//					transport.close();
 					result = EmailConstants.MESSAGE_SENT_OK;
 
 				} catch (Exception e) {
@@ -91,5 +101,4 @@ public class EmailSenderService extends Service<Integer> {
 			}
 		};
 	}
-
 }

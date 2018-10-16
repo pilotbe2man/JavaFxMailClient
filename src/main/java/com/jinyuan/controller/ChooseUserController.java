@@ -1,6 +1,7 @@
 package com.jinyuan.controller;
 
 import com.jinyuan.model.AddressBookItem;
+import com.jinyuan.model.GlobalVariables.GlobalVariables;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,118 +20,7 @@ import java.util.function.Predicate;
 
 public class ChooseUserController extends AbstractController implements Initializable {
 
-    final ObservableList<AddressBookItem> addressBookData = FXCollections.observableArrayList(
-            new AddressBookItem(
-                    "Jhone Smith",
-                    "JhoneSmith@gmail.com",
-                    "361 Degrees",
-                    "China Baowu Steel Group",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "Beijing Hualian Group",
-                    "Bolisi"),
-            new AddressBookItem(
-                    "Zhong Jingyi",
-                    "ZhongJingyi@gmail.com",
-                    "Anta Sports",
-                    "Bosideng",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "Brilliance Auto",
-                    "BYD Auto"),
-            new AddressBookItem(
-                    "Wen Cai",
-                    "WenCai@gmail.com",
-                    "Baidu",
-                    "Changan Automobile",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "Changhe",
-                    "Changhong"),
-            new AddressBookItem(
-                    "Kong Ru",
-                    "KongRu@gmail.com",
-                    "Bank of China",
-                    "Changhong Technology",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "Chery Automobile",
-                    "China Clean Energy"),
-            new AddressBookItem(
-                    "Wei Jing",
-                    "WeiJing@gmail.com",
-                    "China Dongxiang",
-                    "China Eastern Airlines",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China Housing and Land Development",
-                    "China International Marine Containers"),
-            new AddressBookItem(
-                    "Cao Ming",
-                    "CaoMing@gmail.com",
-                    "China Life Insurance Company",
-                    "China Medical Technologies",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China Merchants Bank",
-                    "China Merchants Energy Shipping"),
-            new AddressBookItem(
-                    "Qian Zhou",
-                    "QianZhou@gmail.com",
-                    "China Metal Recycling",
-                    "China Mobile",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China National Erzhong Group",
-                    "China National Offshore Oil Corporation"),
-            new AddressBookItem(
-                    "Duan Huang",
-                    "DuanHuang@gmail.com",
-                    "China National Petroleum Corporation",
-                    "China Natural Gas",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China Nepstar",
-                    "China Netcom"),
-            new AddressBookItem(
-                    "Zhu Wen",
-                    "ZhuWen@gmail.com",
-                    "China Pabst Blue Ribbon",
-                    "China Post",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China Shipping Group",
-                    "China Southern Airlines"),
-            new AddressBookItem(
-                    "Liao Heng",
-                    "LiaoHeng@gmail.com",
-                    "Bank of Communications",
-                    "China Communications Construction",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "123123123123",
-                    "China Construction Bank",
-                    "China COSCO Shipping")
-    );
+    final ObservableList<AddressBookItem> addressBookData = FXCollections.observableArrayList();
     
     @FXML
     TableView userTableView;
@@ -198,38 +88,28 @@ public class ChooseUserController extends AbstractController implements Initiali
 
                 String condition = group.getSelectedToggle().getUserData().toString();
                 if (condition.equalsIgnoreCase("Name Only")) {
-                    if (addressBookItem.fullNameProperty().toString().toLowerCase().contains(lowerCaseFilter))
+                    if (addressBookItem.userIDProperty().toString().toLowerCase().contains(lowerCaseFilter))
                         return true; // Filter matches first name.
                 } else {
-                    if (addressBookItem.fullNameProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.userDepartmentProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    if (addressBookItem.companyProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.userPathProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    if (addressBookItem.fileAsProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.userNameProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    if (addressBookItem.businessPhoneProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.mailAddressProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    if (addressBookItem.businessFaxProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.userLevelProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    if (addressBookItem.homePhoneProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches last name.
-                    }
-                    if (addressBookItem.mobilePhoneProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches last name.
-                    }
-                    if (addressBookItem.journalProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches last name.
-                    }
-                    if (addressBookItem.categoriesProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (addressBookItem.userSecurityLevelProperty().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
                 }
-
                 return false;
 
             });
@@ -247,53 +127,48 @@ public class ChooseUserController extends AbstractController implements Initiali
 
     public void initAddressBookTable() {
 
-        TableColumn fullNameCol = (TableColumn) userTableView.getColumns().get(0);
-        TableColumn companyCol = (TableColumn) userTableView.getColumns().get(1);
-        TableColumn fileAsCol = (TableColumn) userTableView.getColumns().get(2);
-        TableColumn businessPhoneCol = (TableColumn) userTableView.getColumns().get(3);
-        TableColumn businessFaxCol = (TableColumn) userTableView.getColumns().get(4);
-        TableColumn homePhoneCol = (TableColumn) userTableView.getColumns().get(5);
-        TableColumn mobilePhoneCol = (TableColumn) userTableView.getColumns().get(6);
-        TableColumn journalCol = (TableColumn) userTableView.getColumns().get(7);
-        TableColumn categoriesCol = (TableColumn) userTableView.getColumns().get(8);
+        TableColumn userIDCol = (TableColumn) userTableView.getColumns().get(0);
+        TableColumn userDepartmentCol = (TableColumn) userTableView.getColumns().get(1);
+        TableColumn userPathCol = (TableColumn) userTableView.getColumns().get(2);
+        TableColumn userNameCol = (TableColumn) userTableView.getColumns().get(3);
+        TableColumn mailAddressCol = (TableColumn) userTableView.getColumns().get(4);
+        TableColumn userLevelCol = (TableColumn) userTableView.getColumns().get(5);
+        TableColumn userSecurityLevelCol = (TableColumn) userTableView.getColumns().get(6);
 
-        fullNameCol.setPrefWidth(140);
-        companyCol.setPrefWidth(140);
-        fileAsCol.setPrefWidth(140);
-        businessPhoneCol.setPrefWidth(140);
-        businessFaxCol.setPrefWidth(140);
-        homePhoneCol.setPrefWidth(140);
-        mobilePhoneCol.setPrefWidth(140);
-        journalCol.setPrefWidth(140);
-        categoriesCol.setPrefWidth(140);
+        userIDCol.setPrefWidth(150);
+        userDepartmentCol.setPrefWidth(150);
+        userPathCol.setPrefWidth(150);
+        userNameCol.setPrefWidth(100);
+        mailAddressCol.setPrefWidth(150);
+        userLevelCol.setPrefWidth(150);
+        userSecurityLevelCol.setPrefWidth(150);
 
-        fullNameCol.setText("Full Name");
-        companyCol.setText("Company");
-        fileAsCol.setText("File As");
-        businessPhoneCol.setText("Business Phone");
-        businessFaxCol.setText("Business Fax");
-        homePhoneCol.setText("Home Phone");
-        mobilePhoneCol.setText("Mobile Phone");
-        journalCol.setText("Journal");
-        categoriesCol.setText("Categories");
+        userIDCol.setText(get("User_ID"));
+        userDepartmentCol.setText(get("User_Department"));
+        userPathCol.setText(get("User_Path"));
+        userNameCol.setText(get("User_Name"));
+        mailAddressCol.setText(get("Mail_Address"));
+        userLevelCol.setText(get("User_Level"));
+        userSecurityLevelCol.setText(get("User_Security_Level"));
 
-        fullNameCol.setCellValueFactory(new PropertyValueFactory("fullName"));
-        companyCol.setCellValueFactory(new PropertyValueFactory("company"));
-        fileAsCol.setCellValueFactory(new PropertyValueFactory("fileAs"));
-        businessPhoneCol.setCellValueFactory(new PropertyValueFactory("businessPhone"));
-        businessFaxCol.setCellValueFactory(new PropertyValueFactory("businessFax"));
-        homePhoneCol.setCellValueFactory(new PropertyValueFactory("homePhone"));
-        mobilePhoneCol.setCellValueFactory(new PropertyValueFactory("mobilePhone"));
-        journalCol.setCellValueFactory(new PropertyValueFactory("journal"));
-        categoriesCol.setCellValueFactory(new PropertyValueFactory("categories"));
+        userIDCol.setCellValueFactory(new PropertyValueFactory("userID"));
+        userDepartmentCol.setCellValueFactory(new PropertyValueFactory("userDepartment"));
+        userPathCol.setCellValueFactory(new PropertyValueFactory("userPath"));
+        userNameCol.setCellValueFactory(new PropertyValueFactory("userName"));
+        mailAddressCol.setCellValueFactory(new PropertyValueFactory("mailAddress"));
+        userLevelCol.setCellValueFactory(new PropertyValueFactory("userLevel"));
+        userSecurityLevelCol.setCellValueFactory(new PropertyValueFactory("userSecurityLevel"));
 
-//        userTableView.setItems(addressBookData);
+        addressBookData.addAll(GlobalVariables.addresslist);
+
+
+
     }
     
     @FXML
     public void actionOnToButton() {
         AddressBookItem person = (AddressBookItem) userTableView.getSelectionModel().getSelectedItem();
-        String val = person.mailProperty().getValue();
+        String val = person.mailAddressProperty().getValue();
         System.out.println(val);
 
         setEmailToField(toTextField, val);
@@ -302,7 +177,7 @@ public class ChooseUserController extends AbstractController implements Initiali
     @FXML
     public void actionOnCcButton() {
         AddressBookItem person = (AddressBookItem) userTableView.getSelectionModel().getSelectedItem();
-        String val = person.mailProperty().getValue();
+        String val = person.mailAddressProperty().getValue();
         System.out.println(val);
 
         setEmailToField(ccTextField, val);
@@ -311,7 +186,7 @@ public class ChooseUserController extends AbstractController implements Initiali
     @FXML
     public void actionOnBccButton() {
         AddressBookItem person = (AddressBookItem) userTableView.getSelectionModel().getSelectedItem();
-        String val = person.mailProperty().getValue();
+        String val = person.mailAddressProperty().getValue();
         System.out.println(val);
 
         setEmailToField(bccTextField, val);
@@ -325,6 +200,9 @@ public class ChooseUserController extends AbstractController implements Initiali
 
     @FXML
     public void actionOnCancelButton() {
+        toTextField.setText("");
+        ccTextField.setText("");
+        bccTextField.setText("");
         Stage stage = (Stage) userTableView.getScene().getWindow();
         stage.close();
     }

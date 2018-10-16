@@ -21,7 +21,7 @@ public class MessageRendererService extends Service<Void>{
 		this.messageRendererEngine = messageRendererEngine;
 		this.setOnSucceeded(e->{showMessage();});
 	}
-	
+
 	public void setMessageToRender(EmailMessageBean messageToRender){
 		this.messageToRender = messageToRender;
 	}
@@ -108,8 +108,5 @@ public class MessageRendererService extends Service<Void>{
 		messageRendererEngine.loadContent(sb.toString());
 		//TODO: inform UI about attachments.
 	}
-
-
-	
 
 }

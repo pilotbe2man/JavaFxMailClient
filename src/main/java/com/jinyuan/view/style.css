@@ -77,6 +77,16 @@ AnchorPane{
   -fx-text-fill: black;
 }
 
+.attach-menu-button1 {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-border-width: 1;
+}
+
+.attach-menu-button1 .label {
+  -fx-text-fill: black;
+}
+
 .split-menu-button .label {
   -fx-background-color: transparent;
 }

@@ -5,7 +5,9 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage.RecipientType;
 
+import com.jinyuan.controller.PrototypeController;
 import com.jinyuan.model.EmailMessageBean;
+import com.jinyuan.model.GlobalVariables.GlobalVariables;
 import com.jinyuan.view.ViewFactory;
 
 import javafx.collections.FXCollections;
@@ -58,8 +60,7 @@ public class EmailFolderBean<T> extends TreeItem<String>{
 		this.name = value;
 		this.completeName = completeName;
 	}
-	
-	
+
 	public void addEmail(Message message) throws MessagingException{
 		boolean messageIsRead = message.getFlags().contains(Flag.SEEN);
 		EmailMessageBean emailMessageBean= new EmailMessageBean(message.getSubject(), 
@@ -72,7 +73,7 @@ public class EmailFolderBean<T> extends TreeItem<String>{
 		data.add(emailMessageBean);
 		if(!messageIsRead){
 			incrementUnreadMessageCount(1);
-		}		
+		}
 	}
 	
 	public void addEmail(Message message, int index) throws MessagingException{

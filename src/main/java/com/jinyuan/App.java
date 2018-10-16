@@ -28,7 +28,7 @@ public class App extends Application{
 //		} else {
 //			scene = ViewFactory.defaultFactory.getMailTypeSelectionScene();
 //		}
-
+		
 		scene = ViewFactory.defaultFactory.getPrototypeScene();
 		KeyCombination keyCombinationShiftC = new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_ANY);
 		try {
@@ -53,7 +53,6 @@ public class App extends Application{
 	
 	@Override
 	public void stop(){
-		ViewFactory.defaultFactory.getPersistenceAcess().SavePersistence();
+//		ViewFactory.defaultFactory.getPersistenceAcess().SavePersistence();
 	}
-
 }

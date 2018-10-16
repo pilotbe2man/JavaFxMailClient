@@ -1,6 +1,6 @@
 package com.jinyuan.controller;
 
-import java.net.URL;
+import java.net.*;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -212,7 +212,9 @@ public class MainController extends AbstractController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
+		System.out.println("Document Module initialized.");
+
 		//add list view category
 		categoryListView.getItems().add("Mail");
 		categoryListView.getItems().add("AddressBook");
@@ -296,7 +298,7 @@ public class MainController extends AbstractController implements Initializable{
 				e1.printStackTrace();
 			}
 		});
-		deleteMessage.setOnAction(e->{
+		deleteMessage.setOnAction(e-> {
 			EmailMessageBean message = emailTableView.getSelectionModel().getSelectedItem();
 			try {
 				message.getMessageRefference().setFlag(Flags.Flag.DELETED, true);
@@ -306,7 +308,7 @@ public class MainController extends AbstractController implements Initializable{
 			}
 			getModelAccess().getSelectedFolder().getData().remove(message);
 		});
-		reply.setOnAction(e->{
+		reply.setOnAction(e-> {
 			if (messageRendererService.getState() != State.RUNNING) {
 				EmailMessageBean message = emailTableView.getSelectionModel().getSelectedItem();
 				message.setContentForForvarding(messageRendererService.getContent());
@@ -316,10 +318,5 @@ public class MainController extends AbstractController implements Initializable{
 				stage.show();
 			}
 		});
-		
-		
-		
 	}
-	
-
 }

@@ -16,7 +16,7 @@ public class PersistenceAcess {
 	private List<ValidAddressBook> addressBookList = null;
 	public PersistenceAcess(ModelAccess modelAccess) {
 		this.modelAccess = modelAccess;
-		loadFromPersistence();
+//		loadFromPersistence();
 	}
 
 	public ModelAccess modelAccess;	

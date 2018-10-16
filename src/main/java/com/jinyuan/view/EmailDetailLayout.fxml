@@ -13,13 +13,19 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Button fx:id="replyInContentButton" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply" />
-                  <Button fx:id="replyAllInContentButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Reply All">
+                  <Button fx:id="replyInContentButton" mnemonicParsing="false" onAction="#handeClickedOnReplyMenuButton" styleClass="toolBarbutton" text="Reply" />
+                  <Button fx:id="replyAllInContentButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnReplyAllMenuButton" styleClass="toolBarbutton" text="Reply All">
                      <HBox.margin>
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="forwardInContentButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Forward" />
+                  <Button fx:id="forwardInContentButton" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#handeClickedOnForwardMenuButton" styleClass="toolBarbutton" text="Forward" />
+                  <Button fx:id="forwardInContentButton1" layoutX="129.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Waiting for Approval">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="forwardInContentButton11" layoutX="189.0" layoutY="10.0" mnemonicParsing="false" styleClass="toolBarbutton" text="Postal Payment" />
                   <Pane HBox.hgrow="ALWAYS" />
                   <Label fx:id="dateLabel" text="12:34 PM" />
                </children>
@@ -43,7 +49,10 @@
                      </children>
                   </HBox>
                   <Pane HBox.hgrow="ALWAYS" />
-                  <Label fx:id="mailSecurityClassLabel" styleClass="mail_security_class" text="Class 10" />
+                  <Label fx:id="mailSecurityClassLabel" styleClass="mail_security_class" text="Class 10">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                </children>
             </HBox>
             <Label fx:id="fromLabel" text="From:">
@@ -64,9 +73,9 @@
             </Label>
             <FlowPane fx:id="toFollowPane">
                <children>
-                  <Label text="To">
+                  <Label text="To  :  ">
                      <FlowPane.margin>
-                        <Insets bottom="5.0" right="20.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </FlowPane.margin>
                      <font>
                         <Font size="15.0" />
@@ -78,16 +87,11 @@
                </VBox.margin>
             </FlowPane>
             <FlowPane fx:id="ccFlowPane" layoutX="25.0" layoutY="114.0">
-               <children>
-                  <Label fx:id="ccLabel" text="Cc">
-                     <FlowPane.margin>
-                        <Insets bottom="5.0" right="20.0" top="5.0" />
-                     </FlowPane.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </FlowPane>
+            <FlowPane fx:id="bccFlowPane">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
@@ -118,6 +122,18 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </WebView>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label fx:id="statusLabel">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -1,6 +1,8 @@
 package com.jinyuan.controller;
 
 import com.jinyuan.model.EmailValidator;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -10,6 +12,8 @@ import javax.swing.filechooser.FileSystemView;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.*;
 
 public abstract class AbstractController {
 	
@@ -92,5 +96,48 @@ public abstract class AbstractController {
 		if (tf.getText().toLowerCase().contains(val.toLowerCase().trim()))
 			return true;
 		return false;
+	}
+
+	private static final ObjectProperty<Locale> locale;
+
+	static {
+		locale = new SimpleObjectProperty<>(getDefaultLocale());
+		locale.addListener((observable, oldValue, newValue) -> Locale.setDefault(newValue));
+	}
+
+	/**
+	 * get the supported Locales.
+	 *
+	 * @return List of Locale objects.
+	 */
+	public static List<Locale> getSupportedLocales() {
+		return new ArrayList<>(Arrays.asList(Locale.ENGLISH, Locale.CHINA));
+	}
+
+	public static String get(final String key, final Object... args) {
+		ResourceBundle bundle = ResourceBundle.getBundle("com/jinyuan/resources/lang", getLocale());
+		return MessageFormat.format(bundle.getString(key), args);
+	}
+
+	/* get the default locale. This is the systems default if contained in the supported locales, english otherwise.
+	 *
+	 * @return
+	 */
+	public static Locale getDefaultLocale() {
+		Locale sysDefault = Locale.getDefault();
+		return getSupportedLocales().contains(sysDefault) ? sysDefault : Locale.ENGLISH;
+	}
+
+	public static Locale getLocale() {
+		return locale.get();
+	}
+
+	public static void setLocale(Locale locale) {
+		localeProperty().set(locale);
+		Locale.setDefault(locale);
+	}
+
+	public static ObjectProperty<Locale> localeProperty() {
+		return locale;
 	}
 }
